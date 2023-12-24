@@ -67,10 +67,13 @@
 
 .search_categorias ol{
    display: flex;
+   align-items: center;
    background-color: rgb(37, 37, 37);
    gap: 12px;
-   padding: 0px 10px;
+   padding: 0px 15px;
+   overflow: auto;
 }
+
 
 
 .search_categorias li {

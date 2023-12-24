@@ -127,16 +127,16 @@
 
   .close_modal {
     display: flex;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     justify-content: center;
     align-items: center;
     font-weight: bolder;
     font-size: 20px;
     background-color: black;
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 5px;
+    top: 5px;
     color: #fff;
     border-radius: 50%;
     transition: all 0.3s;
@@ -166,6 +166,8 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    color: #fff;
+    text-align: center;
   }
   .form_modal section div {
     display: flex;

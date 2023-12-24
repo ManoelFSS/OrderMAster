@@ -47,13 +47,19 @@ ul {
 }
 
 ul li {
-    background-color: rgb(70, 70, 70);
+    background-color: rgb(94, 93, 93);
     width: 100%;
     text-align: center;
     padding: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
     color: aliceblue;
     font-weight: bolder;
     font-size: 20px;
     border-radius: 10px;
+    box-shadow: 1px 3px 8px #000000;
+    transition: all 0.3s;
+}
+
+ul li:hover {
+    background-color: chocolate;
 }

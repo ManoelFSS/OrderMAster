@@ -29,7 +29,7 @@ export const Card = () => {
                             <div>
                                 <div>
                                     <h4>Preço</h4>
-                                    <p>{produto.preco}</p>
+                                    <p>{produto.preco.toFixed(2)}</p>
                                 </div>
                                 <div>
                                     <h4>Estoque</h4>
@@ -37,7 +37,7 @@ export const Card = () => {
                                 </div>
                                 <div>
                                     <h4>Status</h4>
-                                    <p>Disponivel</p>
+                                    <p>{produto.status === true ?  produto.estoque <= 0 ? "Indisponivel" : "Disponivel" : "Indisponivel" }</p>
                                 </div> 
                             </div>
                             <div>

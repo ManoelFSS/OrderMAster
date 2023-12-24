@@ -1,0 +1,207 @@
+.produts {
+    position: relative;
+    height: calc(100vh - 11.3vh);
+    width: 100%;
+}
+
+.btn_add_produtos {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    font-weight: bolder;
+    font-size: 30px;
+    position: absolute;
+    z-index: 98;
+    top: 100px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.btn_add_produtos:hover{
+    background-color: chocolate;
+}
+
+.search_container{
+   background-color: rgb(37, 37, 37);
+   display: flex;
+   flex-direction: column;
+  
+}
+.input_area{
+    display: flex;
+    gap: 10px;
+}
+
+.search_input div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 18px;
+    background-color: chocolate;
+}
+
+.search_input div h2{
+    color: rgb(255, 255, 255);
+    background-color: rgb(37, 37, 37);
+    border-radius: 0px 1% 0px 0px;
+    font-size: 20px;
+    padding: 10px 20px;
+  
+}
+
+.search_input input {
+    height: 30px;
+    border: none;
+    width: 140px;
+    padding: 0px 10px;
+    border-radius: 6px;
+}
+
+.search_categorias{
+    display: flex;
+    justify-content:center;
+}
+
+.search_categorias ol{
+   display: flex;
+   background-color: rgb(37, 37, 37);
+   gap: 12px;
+   padding: 0px 10px;
+}
+
+
+.search_categorias li {
+   color: #fff;
+   font-weight: bolder;
+   font-size: 18px;
+   padding: 8px 5px;
+   transition: all 0.3s;
+   border-bottom: solid 5px rgb(37, 37, 37);
+}
+
+.search_categorias li:hover {
+    border-bottom: solid 5px chocolate;
+}
+
+.area_produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width:100%;
+    height: calc(100vh - 20.5vh);
+    padding: 20px 0px;
+    overflow: auto;
+    padding-top: 50px;
+}
+
+.area_produtos::-webkit-scrollbar {
+    width: 5px;
+}
+.area_produtos::-webkit-scrollbar-thumb {
+    background-color: chocolate; /* cor do polegar da barra de rolagem */
+  }
+
+  .area_modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position:fixed;
+    height: calc(100vh );
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.911);
+    z-index: 111;
+    top: 0;
+    padding: 40px;
+    
+  }
+
+  .modal {
+    background-color: chocolate;
+    border-radius: 10px;
+    box-shadow: 2px 4px 20px #000000bd;
+    position: relative;
+  }
+
+  .close_modal {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 20px;
+    background-color: black;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #fff;
+    border-radius: 50%;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .close_modal:hover {
+    background-color: rgb(136, 136, 136);
+  }
+
+  .form_modal {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .form_modal section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form_modal section img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+  .form_modal section div {
+    display: flex;
+    flex-direction: column;
+    padding: 6px;
+  }
+
+  .form_modal section div input{
+    width:250px;
+    height: 30px;
+    padding-left: 10px;
+  }
+
+  .form_modal section div label{
+    font-weight: bolder;
+    font-size: 18px;
+    color: #fff;
+    padding: 0px;
+
+  }
+  .form_modal section div textarea{
+    padding: 10px;
+  }
+
+  .form_modal section  button {
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    border: none;
+    font-weight: bolder;
+    transition: all 0.3s;
+    border-radius: 10px;
+  }
+
+  .form_modal section  button:hover {
+    background-color: black;
+    color: #fff;
+    box-shadow: 1px 2px 5px #000;
+  }

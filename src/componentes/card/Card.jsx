@@ -4,13 +4,15 @@ import { useProdutsContext } from "../../ProdutsContext";
 
 export const Card = () => {
 
-    const {produts} = useProdutsContext()
+    const {produts, getEditModal} = useProdutsContext("none")
     const [btn_toogle,setbtn_toogle] = useState(true)
 
-    
+    const hendleEditar = (flex) => {
+        getEditModal(flex)
+    }
 
     const toogle = (e) => {
-        // toogle card ...
+        setbtn_toogle(!btn_toogle ? true : false)
     }
 
     return (
@@ -29,7 +31,7 @@ export const Card = () => {
                             <div>
                                 <div>
                                     <h4>Preço</h4>
-                                    <p>{produto.preco.toFixed(2)}</p>
+                                    <p>{produto.preco}</p>
                                 </div>
                                 <div>
                                     <h4>Estoque</h4>
@@ -61,7 +63,10 @@ export const Card = () => {
                             </div>
                         </div>
                         <div className={styles.area_edit_exclir}>
-                            <div className={styles.btn_editar}></div>
+                            <div 
+                                className={styles.btn_editar}
+                                onClick={()=> hendleEditar("flex")}
+                            ></div>
                             <div className={styles.btn_excluir}></div>
                         </div>
                     </figure>

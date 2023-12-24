@@ -8,6 +8,10 @@ export const ProdutsProvider = ({ children }) => {
 
     const [produts, setProduts] = useState([])
 
+    const getValues_inputs = (image, nome, preco, descricao, estoque, categoria) =>{
+      criarProduto(image, nome, preco, descricao, estoque,categoria)
+    }
+
     const db_app = getFirestore(app)
     const userCollectionRef = collection(db_app, "products")
 
@@ -18,12 +22,30 @@ export const ProdutsProvider = ({ children }) => {
       console.log(result)
     }
 
+    async function criarProduto(image, nome, preco, descricao, estoque, categoria){
+      event.preventDefault()
+   
+      await addDoc(userCollectionRef, {
+        image:image,
+        nome:nome,
+        preco:preco,
+        descricao:descricao,
+        estoque:estoque,
+        status:true,
+        categoria:categoria,
+      })
+      getProduts()
+    }
+
     useEffect(()=>{
         getProduts()
      },[])
 
+
+
+
     return (
-        <ProdutsContext.Provider value={{ produts }}>
+        <ProdutsContext.Provider value={{ produts, getValues_inputs}}>
             {children}
         </ProdutsContext.Provider>
     )

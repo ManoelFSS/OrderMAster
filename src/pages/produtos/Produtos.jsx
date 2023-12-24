@@ -2,15 +2,26 @@ import React, {useState} from "react";
 import styles from "./Produtos.module.css"
 import { Search } from "./Search";
 import { Card } from "../../componentes/card/Card";
+import { useProdutsContext } from "../../ProdutsContext";
 
 export const Produtos = () =>{
 
+  const {getValues_inputs} = useProdutsContext()
+
   const [modal, setmodal] = useState("none")
-  const [image, setimage] = useState()
-  const [nome, setnome] = useState()
-  const [preco, setpreco] = useState()
-  const [descricao, setdescricao] = useState()
-  const [estoque, setestoque] = useState()
+
+  const [image, setimage] = useState("")
+  const [nome, setnome] = useState("")
+  const [preco, setpreco] = useState("")
+  const [descricao, setdescricao] = useState("")
+  const [estoque, setestoque] = useState("")
+  const [categoria, setcategoria] = useState("")
+ 
+  const hendlecreate_card = () =>{
+    getValues_inputs(image, nome, preco, descricao, estoque, categoria)
+    setmodal("none")
+  }
+ 
 
     return (
         <section className={styles.produts}>
@@ -84,11 +95,21 @@ export const Produtos = () =>{
                       value={estoque}
                       id="estoque"
                       type="number" 
-                      placeholder="digite a quantidade" 
+                      placeholder="Digite a quantidade" 
                       onChange={(e) => setestoque(e.target.value)}
                     />
                   </div>
-                  <button>Adicionar</button>
+                  <div>
+                    <label htmlFor="estoque">Categotia do Produto</label>
+                    <input  
+                      value={categoria}
+                      id="categoria"
+                      type="text" 
+                      placeholder="Digite a Categoria" 
+                      onChange={(e) => setcategoria(e.target.value)}
+                    />
+                  </div>
+                  <button onClick={()=> hendlecreate_card()}>Adicionar</button>
                 </section>
               </form>
               <span 

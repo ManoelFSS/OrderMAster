@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./Produtos.module.css"
 import { Search } from "./Search";
 import { Card } from "../../componentes/card/Card";
@@ -6,9 +6,8 @@ import { useProdutsContext } from "../../ProdutsContext";
 
 export const Produtos = () =>{
 
-  const {getValues_inputs} = useProdutsContext()
+  const {getValues_inputs, modal, getValue_modal} = useProdutsContext()
 
-  const [modal, setmodal] = useState("none")
 
   const [image, setimage] = useState("")
   const [nome, setnome] = useState("")
@@ -16,10 +15,11 @@ export const Produtos = () =>{
   const [descricao, setdescricao] = useState("")
   const [estoque, setestoque] = useState("")
   const [categoria, setcategoria] = useState("")
+  
  
   const hendlecreate_card = () =>{
     getValues_inputs(image, nome, preco, descricao, estoque, categoria)
-    setmodal("none")
+    getValue_modal("none")
   }
  
 
@@ -29,7 +29,7 @@ export const Produtos = () =>{
             <section className={styles.area_produtos}>
               <button 
                 className={styles.btn_add_produtos}
-                onClick={()=> setmodal("flex")}
+                onClick={()=> getValue_modal("flex")}
               >+</button>
               <Card/>
           </section>
@@ -114,7 +114,7 @@ export const Produtos = () =>{
               </form>
               <span 
                 className={styles.close_modal}
-                onClick={()=> setmodal("none")}
+                onClick={()=> getValue_modal("none")}
               >X</span>
             </div>
           </section>

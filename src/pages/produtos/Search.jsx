@@ -1,8 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./Produtos.module.css"
+import { useProdutsContext } from "../../ProdutsContext";
 
 
 export const Search = () =>{
+
+    const {categorias} = useProdutsContext()
+    console.log(categorias)
+ 
     return (
         <section className={styles.search_container}>
             <div className={styles.search_input}>
@@ -13,9 +18,10 @@ export const Search = () =>{
             </div>
             <div className={styles.search_categorias}>
                 <ol className={styles.search_ul}>
-                    <li >Todos</li>
-                    <li style={{borderBottom:" solid 5px chocolate"}} >Refrigerantes</li>
-                    <li>Petiscos</li>
+                    <li>Todas</li>
+                    {[...categorias].map((item, index) => (
+                        <li key={index}>{item}</li>
+                    ))}
                 </ol>
             </div>
         </section>

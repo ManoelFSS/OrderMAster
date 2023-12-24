@@ -4,15 +4,15 @@ import { useProdutsContext } from "../../ProdutsContext";
 
 export const Card = () => {
 
-    const {produts, getEditModal} = useProdutsContext("none")
-    const [btn_toogle,setbtn_toogle] = useState(true)
-
-    const hendleEditar = (flex) => {
-        getEditModal(flex)
+    const {produts, getValue_modal, deletaritem} = useProdutsContext()
+   
+    const getId = (id) => {
+        deletaritem(id)
     }
-
+    
+     // const [btn_toogle,setbtn_toogle] = useState(true)
     const toogle = (e) => {
-        setbtn_toogle(!btn_toogle ? true : false)
+        // setbtn_toogle(!btn_toogle ? true : false)
     }
 
     return (
@@ -65,9 +65,12 @@ export const Card = () => {
                         <div className={styles.area_edit_exclir}>
                             <div 
                                 className={styles.btn_editar}
-                                onClick={()=> hendleEditar("flex")}
+                                onClick={()=> getValue_modal("flex")}
                             ></div>
-                            <div className={styles.btn_excluir}></div>
+                            <div 
+                                className={styles.btn_excluir}
+                                onClick={()=> getId(produto.id)}
+                            ></div>
                         </div>
                     </figure>
                 ))

@@ -77,7 +77,7 @@ export const ProdutsProvider = ({ children }) => {
 
     useEffect(()=>{
         getProduts()
-     },[fillterCategoria])
+     },[fillterCategoria, getFillterCategoria])
 
 
 

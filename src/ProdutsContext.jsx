@@ -8,9 +8,10 @@ export const ProdutsProvider = ({ children }) => {
 
     const [produts, setProduts] = useState([])
     const [modal, setModal] = useState("none")
-    // const [itemEditado, setIteEditado] = useState()
     const [categorias, setcategorias] = useState([])
-    const [fillterCategoria, setfillterCategoria] =  useState(JSON.parse(localStorage.getItem("menuAtivo")))
+
+    const getFillterCategoria = JSON.parse(localStorage.getItem("menuAtivo"))
+    const [fillterCategoria, setfillterCategoria] =  useState(getFillterCategoria ? JSON.parse(localStorage.getItem("menuAtivo")) : localStorage.setItem("menuAtivo", JSON.stringify("Todas")))
 
     const getCategoriaFillter = (fillCater) => {
       setfillterCategoria(fillCater)
@@ -30,7 +31,7 @@ export const ProdutsProvider = ({ children }) => {
     const getProduts = async () => {
       const response = await getDocs(userCollectionRef)
       const  result = response.docs.map((doc) => ({...doc.data(), id: doc.id}))
-      const itemfiltrado = result.filter((filtro)=>fillterCategoria === "" || fillterCategoria === "Todas" ? filtro.categoria : filtro.nome.toLowerCase().includes(fillterCategoria.toLowerCase()) || filtro.categoria.toLowerCase().includes(fillterCategoria.toLowerCase()))
+      const itemfiltrado = result.filter((filtro) => fillterCategoria === " " || fillterCategoria === "Todas" ? filtro.categoria : filtro.nome.toLowerCase().includes(fillterCategoria.toLowerCase()) || filtro.categoria.toLowerCase().includes(fillterCategoria.toLowerCase()))
       setProduts(itemfiltrado)
       
       const categoriafitrada = result.map((item)=> item.categoria)

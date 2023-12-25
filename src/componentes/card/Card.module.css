@@ -34,9 +34,13 @@
     text-align: center;
     background-color: chocolate;
     padding: 3px;
-    width: 235px;
+    width: 260px;
     color: #fff;
     box-shadow: 1px 3px 6px #000;
+    text-transform: capitalize;
+    border-radius: 6px;
+    font-size: 22px;
+    padding: 4px 0px;
 }
 
 .area_text {
@@ -50,7 +54,7 @@
    color: #000000;
    width: 100px;
    padding: 6px 10px;
-   box-shadow: inset 1px 3px 6px #0000007e;
+   box-shadow: inset 1px 3px 6px #000000;
    font-weight:bolder;
 }
 
@@ -93,7 +97,7 @@
     height: 22px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    box-shadow: inset 1px 3px 10px #0000007e;
+    box-shadow: inset 1px 3px 10px #000000;
 }
 
 .circo_toogle {
@@ -119,7 +123,7 @@
     width: 120px;
     max-height: 160px;
     min-height: 160px;
-    box-shadow: inset 1px 3px 10px #00000073;
+    box-shadow: inset 1px 3px 10px #000000;
 }
 
 .area_descricao::-webkit-scrollbar {

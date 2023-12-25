@@ -6,22 +6,56 @@ import { useProdutsContext } from "../../ProdutsContext";
 
 export const Produtos = () =>{
 
-  const {getValues_inputs, modal, getValue_modal} = useProdutsContext()
-
-
+  const {
+      getValues_inputs,
+      modal,
+      getValue_modal,
+      IdInput,
+      setIdInput,
+      
+  } = useProdutsContext()
+    
   const [image, setimage] = useState("")
   const [nome, setnome] = useState("")
   const [preco, setpreco] = useState("")
   const [descricao, setdescricao] = useState("")
   const [estoque, setestoque] = useState("")
   const [categoria, setcategoria] = useState("")
+
+
+  const hendleCamposInput = () => {
+    const ItemForm = JSON.parse(localStorage.getItem("db_item"))
   
- 
+    if (ItemForm && ItemForm.length > 0) {
+      setimage(ItemForm[0].image)
+      setnome(ItemForm[0].nome)
+      setpreco(ItemForm[0].preco)
+      setdescricao(ItemForm[0].descricao)
+      setestoque(ItemForm[0].estoque)
+      setcategoria(ItemForm[0].categoria)
+    }
+  };
+
+  useEffect(()=>{
+    if(IdInput){
+      hendleCamposInput()
+      setIdInput("")
+    }
+  })
+
   const hendlecreate_card = () =>{
     getValues_inputs(image, nome, preco, descricao, estoque, categoria)
     getValue_modal("none")
   }
- 
+
+  const clearinputs = () => {
+    setimage("")
+    setnome("")
+    setpreco("")
+    setdescricao("")
+    setestoque("")
+    setcategoria("")
+  }
 
     return (
         <section className={styles.produts}>
@@ -29,7 +63,7 @@ export const Produtos = () =>{
             <section className={styles.area_produtos}>
               <button 
                 className={styles.btn_add_produtos}
-                onClick={()=> getValue_modal("flex")}
+                onClick={()=> {getValue_modal("flex"), clearinputs()}}
               >+</button>
               <Card/>
           </section>
@@ -96,7 +130,7 @@ export const Produtos = () =>{
                       id="estoque"
                       type="number" 
                       placeholder="Digite a quantidade" 
-                      onChange={(e) => setestoque(e.target.value)}
+                      onChange={(e) => setestoque(parseInt(e.target.value))}
                     />
                   </div>
                   <div>
@@ -109,12 +143,12 @@ export const Produtos = () =>{
                       onChange={(e) => setcategoria(e.target.value)}
                     />
                   </div>
-                  <button onClick={()=> hendlecreate_card()}>Adicionar</button>
+                  <button onClick={()=> { hendlecreate_card(), getValue_modal("none"), setIdInput("") }}>Adicionar</button>
                 </section>
               </form>
               <span 
                 className={styles.close_modal}
-                onClick={()=> getValue_modal("none")}
+                onClick={()=> {setIdInput(""), getValue_modal("none"), clearinputs()}}
               >X</span>
             </div>
           </section>

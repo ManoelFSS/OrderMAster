@@ -4,16 +4,19 @@ import { useProdutsContext } from "../../ProdutsContext";
 
 export const Card = () => {
 
-    const {produts, getValue_modal, deletaritem} = useProdutsContext()
+    const {
+            produts,
+            getValue_modal,
+            deletaritem,
+            getIdModalItem,
+            setToogle
+        } = useProdutsContext()
    
     const getId = (id) => {
         deletaritem(id)
     }
     
-     // const [btn_toogle,setbtn_toogle] = useState(true)
-    const toogle = (e) => {
-        // setbtn_toogle(!btn_toogle ? true : false)
-    }
+    
 
     return (
         <>
@@ -58,14 +61,14 @@ export const Card = () => {
                                 <div 
                                     className={styles.circo_toogle}
                                     style={{left:produto.status === true ? produto.estoque <= 0 ? "0px" : "25px"  : "0px", backgroundColor:produto.status === true ?  produto.estoque <= 0 ? "chocolate" : "#48ff00" : "chocolate" }}
-                                    onClick={()=> toogle(produto.id)}
+                                    onClick={()=> setToogle(produto.id, produto.status ? false : true)}
                                 ></div>
                             </div>
                         </div>
                         <div className={styles.area_edit_exclir}>
                             <div 
                                 className={styles.btn_editar}
-                                onClick={()=> getValue_modal("flex")}
+                                onClick={()=> {getValue_modal("flex"), getIdModalItem(produto.id)}}
                             ></div>
                             <div 
                                 className={styles.btn_excluir}

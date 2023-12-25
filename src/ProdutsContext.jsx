@@ -9,21 +9,20 @@ export const ProdutsProvider = ({ children }) => {
     const [produts, setProduts] = useState([])
     const [modal, setModal] = useState("none")
     const [categorias, setcategorias] = useState([])
+   
+
+    const [image, setimage] = useState("")
+    const [nome, setnome] = useState("")
+    const [preco, setpreco] = useState("")
+    const [descricao, setdescricao] = useState("")
+    const [estoque, setestoque] = useState("")
+    const [categoria, setcategoria] = useState("")
+    const [IdInput, setIdInput] = useState()
+    const [Id, setId] = useState()
+    
 
     const getFillterCategoria = JSON.parse(localStorage.getItem("menuAtivo"))
     const [fillterCategoria, setfillterCategoria] =  useState(getFillterCategoria ? JSON.parse(localStorage.getItem("menuAtivo")) : localStorage.setItem("menuAtivo", JSON.stringify("Todas")))
-
-    const getCategoriaFillter = (fillCater) => {
-      setfillterCategoria(fillCater)
-    }
-
-    const getValue_modal = (value)=> {
-        setModal(value)
-    }
-
-    const getValues_inputs = (image, nome, preco, descricao, estoque, categoria) =>{
-      criarProduto(image, nome, preco, descricao, estoque,categoria)
-    }
 
     const db_app = getFirestore(app)
     const userCollectionRef = collection(db_app, "products")
@@ -40,55 +39,114 @@ export const ProdutsProvider = ({ children }) => {
     }
 
     async function criarProduto(image, nome, preco, descricao, estoque, categoria){
+      
       event.preventDefault()
-   
-      await addDoc(userCollectionRef, {
+
+      if(Id){
+        editaritem (Id,image, nome, preco, descricao, estoque, categoria)
+        setId("")
+      }else{
+
+        await addDoc(userCollectionRef, {
+          image:image,
+          nome:nome,
+          preco:preco,
+          descricao:descricao,
+          estoque:estoque,
+          status:true,
+          categoria:categoria,
+        })
+        getProduts()
+      }
+     
+    }
+
+    async function deletaritem(id){
+      const itemDeletado = doc(db_app, "products", id)
+      await deleteDoc(itemDeletado)
+      getProduts()
+    }
+
+    const  editaritem = async (id, image, nome, preco, descricao, estoque, categoria) => {
+
+      const newdoc = doc(db_app, "products",id)
+
+      const atualizar = {
         image:image,
         nome:nome,
         preco:preco,
         descricao:descricao,
         estoque:estoque,
-        status:true,
         categoria:categoria,
-      })
-      getProduts()
-    }
+      }
 
-    async function deletaritem(id){
-      const delet = doc(db_app, "products", id)
-      await deleteDoc(delet)
-      getProduts()
+      await updateDoc(newdoc,atualizar)
+      getProduts()  
     }
 
 
-    // pegando o item do array e suas propriedades pelo id
+    const setToogle = async (id, toogle) => {
+
+      const newdoc = doc(db_app, "products",id)
+
+      const atualizar = {
+        status:toogle
+      }
+
+      await updateDoc(newdoc,atualizar)
+      getProduts()  
+
+    }
+
+
     const getIdModalItem = (id) => {
-      const itemFitrado = produts.filter((item)=> item.id === id)
-      setIteEditado(itemFitrado)
-   
+      if(modal !== ""){
+        const itemFitrado = produts.filter((item)=> item.id === id)
+        CamposInput(itemFitrado)
+        setIdInput(id)
+        setId(id)
+      }  
     }
 
-    // const  editaritem = async (id) => {
-    //   const newdoc = doc(db_app, "products",id)
-    //   const atualizar = {produts}
-    //   await updateDoc(newdoc,atualizar)
-    //   getProduts()
-    // }
+    const getCategoriaFillter = (fillCater) => {
+        setfillterCategoria(fillCater)
+    }
+
+    const getValue_modal = (value)=> {
+          setModal(value)
+          
+    }
+
+    const getValues_inputs = (image, nome, preco, descricao, estoque, categoria) =>{
+      criarProduto(image, nome, preco, descricao, estoque,categoria)
+    }
+
+    const CamposInput = (el) => {
+      localStorage.setItem("db_item", JSON.stringify(el))
+    }
 
     useEffect(()=>{
         getProduts()
      },[fillterCategoria, getFillterCategoria])
 
-
-
-
     return (
-        <ProdutsContext.Provider value={{ produts, getValues_inputs, deletaritem, modal, getValue_modal, getIdModalItem,  categorias, getCategoriaFillter}}>
-            {children}
-        </ProdutsContext.Provider>
+        <ProdutsContext.Provider value={{ 
+          produts, 
+          getValues_inputs, 
+          deletaritem, 
+          modal, 
+          getValue_modal, 
+          getIdModalItem,  
+          categorias, 
+          getCategoriaFillter,
+          IdInput,
+          setIdInput,
+          setToogle,
+          
+
+        }}>{children}</ProdutsContext.Provider>
     )
 }
-
 
 export const useProdutsContext = () => {
   return useContext(ProdutsContext);

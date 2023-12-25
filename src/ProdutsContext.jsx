@@ -8,8 +8,13 @@ export const ProdutsProvider = ({ children }) => {
 
     const [produts, setProduts] = useState([])
     const [modal, setModal] = useState("none")
-    const [itemEditado, setIteEditado] = useState()
+    // const [itemEditado, setIteEditado] = useState()
     const [categorias, setcategorias] = useState([])
+    const [fillterCategoria, setfillterCategoria] =  useState(JSON.parse(localStorage.getItem("menuAtivo")))
+
+    const getCategoriaFillter = (fillCater) => {
+      setfillterCategoria(fillCater)
+    }
 
     const getValue_modal = (value)=> {
         setModal(value)
@@ -25,14 +30,12 @@ export const ProdutsProvider = ({ children }) => {
     const getProduts = async () => {
       const response = await getDocs(userCollectionRef)
       const  result = response.docs.map((doc) => ({...doc.data(), id: doc.id}))
-      setProduts(result)
-      console.log(result)
+      const itemfiltrado = result.filter((filtro)=>fillterCategoria === "" || fillterCategoria === "Todas" ? filtro.categoria : filtro.nome.toLowerCase().includes(fillterCategoria.toLowerCase()) || filtro.categoria.toLowerCase().includes(fillterCategoria.toLowerCase()))
+      setProduts(itemfiltrado)
+      
       const categoriafitrada = result.map((item)=> item.categoria)
       const categoriasUnicas = new Set(categoriafitrada);
       setcategorias(categoriasUnicas)
-
-     
-
     }
 
     async function criarProduto(image, nome, preco, descricao, estoque, categoria){
@@ -73,13 +76,13 @@ export const ProdutsProvider = ({ children }) => {
 
     useEffect(()=>{
         getProduts()
-     },[])
+     },[fillterCategoria])
 
 
 
 
     return (
-        <ProdutsContext.Provider value={{ produts, getValues_inputs, deletaritem, modal, getValue_modal, getIdModalItem, itemEditado, categorias}}>
+        <ProdutsContext.Provider value={{ produts, getValues_inputs, deletaritem, modal, getValue_modal, getIdModalItem,  categorias, getCategoriaFillter}}>
             {children}
         </ProdutsContext.Provider>
     )

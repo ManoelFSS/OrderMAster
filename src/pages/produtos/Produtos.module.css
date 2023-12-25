@@ -74,18 +74,17 @@
    overflow: auto;
 }
 
-
-
 .search_categorias li {
    color: #fff;
    font-weight: bolder;
-   font-size: 18px;
+   font-size: 20px;
    padding: 8px 5px;
    transition: all 0.3s;
    border-bottom: solid 5px rgb(37, 37, 37);
+   text-transform: capitalize;
 }
 
-.search_categorias li:hover {
+.search_categorias li:hover, .ativo {
     border-bottom: solid 5px chocolate;
 }
 

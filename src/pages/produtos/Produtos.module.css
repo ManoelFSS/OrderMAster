@@ -48,14 +48,14 @@
     background-color: rgb(37, 37, 37);
     border-radius: 0px 1% 0px 0px;
     font-size: 20px;
-    padding: 10px 20px;
+    padding: 10px 22px;
   
 }
 
 .search_input input {
     height: 30px;
     border: none;
-    width: 140px;
+    width: 150px;
     padding: 0px 10px;
     border-radius: 6px;
 }
@@ -70,7 +70,7 @@
    align-items: center;
    background-color: rgb(37, 37, 37);
    gap: 12px;
-   padding: 0px 15px;
+   padding: 0px 16px;
    overflow: auto;
 }
 

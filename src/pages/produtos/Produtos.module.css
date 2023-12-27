@@ -25,7 +25,7 @@
 }
 
 .search_container{
-   background-color: rgb(37, 37, 37);
+   background: linear-gradient(90deg, #ffffff 50%, rgb(255, 255, 255)  50%);
    display: flex;
    flex-direction: column;
   
@@ -44,12 +44,13 @@
 }
 
 .search_input div h2{
-    color: rgb(255, 255, 255);
-    background-color: rgb(37, 37, 37);
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     border-radius: 0px 1% 0px 0px;
-    font-size: 20px;
+    font-size: 23px;
     padding: 10px 22px;
    border-radius: 0px 20px 0px 0px;
+
 }
 
 .search_input input {
@@ -68,19 +69,20 @@
 .search_categorias ol{
    display: flex;
    align-items: center;
-   background-color: rgb(37, 37, 37);
+   background-color: #ffffff;
    gap: 12px;
    padding: 0px 16px;
    overflow: auto;
+   border-radius: 30px;
 }
 
 .search_categorias li {
-   color: #fff;
+   color: #000000;
    font-weight: bolder;
    font-size: 20px;
    padding: 8px 5px;
    transition: all 0.3s;
-   border-bottom: solid 5px rgb(37, 37, 37);
+   border-bottom: solid 5px rgb(255, 255, 255);
    text-transform: capitalize;
 }
 
@@ -133,14 +135,13 @@
     height: 35px;
     justify-content: center;
     align-items: center;
-    font-weight: bolder;
-    font-size: 20px;
+    font-size: 12px;
     background-color: black;
     position: absolute;
     left: 5px;
     top: 5px;
     color: #fff;
-    border-radius: 50%;
+    border-radius: 30%;
     transition: all 0.3s;
     cursor: pointer;
   }
@@ -181,13 +182,14 @@
     width:250px;
     height: 30px;
     padding-left: 10px;
+    border: none;
+    margin-top: 10px;
   }
 
   .form_modal section div label{
     font-weight: bolder;
     font-size: 18px;
     color: #fff;
-    padding: 0px;
 
   }
   .form_modal section div textarea{

@@ -39,13 +39,18 @@ export const Produtos = () =>{
   useEffect(()=>{
     if(IdInput){
       hendleCamposInput()
-      setIdInput("")
     }
-  })
+  },[IdInput])
 
   const hendlecreate_card = () =>{
-    getValues_inputs(image, nome, preco, descricao, estoque, categoria)
-    getValue_modal("none")
+      
+    if(image !== "" && nome !== "" && preco !== "" && descricao !== "" && estoque !== "" && categoria !==""){
+      getValues_inputs(image, nome, preco, descricao, estoque, categoria)
+      getValue_modal("none")
+      setIdInput("")
+    }else{
+      alert("Preencha todos os Campos")
+    }
   }
 
   const clearinputs = () => {
@@ -143,7 +148,7 @@ export const Produtos = () =>{
                       onChange={(e) => setcategoria(e.target.value)}
                     />
                   </div>
-                  <button onClick={()=> { hendlecreate_card(), getValue_modal("none"), setIdInput("") }}>Adicionar</button>
+                  <button onClick={()=> { hendlecreate_card() }}>{IdInput ? "Editar" : "Adicionar"}</button>
                 </section>
               </form>
               <span 

@@ -56,7 +56,7 @@
     border-radius: 10px;
     transform: scale(0.9);
     border-radius: 50%;
-    
+    object-fit: cover;
 }
 
 .tile_descricao {

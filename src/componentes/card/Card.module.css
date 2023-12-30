@@ -24,10 +24,11 @@
 }
 
 .card img {
-    width: 100%;
+    width: 100px;
     height: 100px;
-    object-fit: contain;
+    object-fit: cover;
     padding: 6px;
+    border-radius: 50%;
 }
 
 .card h2 {

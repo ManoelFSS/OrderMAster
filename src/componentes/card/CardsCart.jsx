@@ -22,7 +22,10 @@ export const CardsCart = () => {
         <>
             {
                produts.map((produto)=>(
-                   <section key={produto.id} className={styles.card}>
+                    <section 
+                        key={produto.id} className={styles.card}
+                        style={{opacity:produto.status === true ?  produto.estoque <= 0 ? "0.4" : "1" : "0.4" }}
+                    >
                         <div>
                             <section>
                                 <img src={produto.image} alt="" />

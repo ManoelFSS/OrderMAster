@@ -21,7 +21,7 @@
     transition: all 0.3s;
 }
 .btn_add_produtos:hover{
-    background-color: chocolate;
+    background-color: tomato;
 }
 
 .search_container{
@@ -40,7 +40,7 @@
     align-items: center;
     justify-content: space-between;
     padding-right: 18px;
-    background-color: chocolate;
+    background-color: tomato;
 }
 
 .search_input div h2{
@@ -87,7 +87,7 @@
 }
 
 .search_categorias li:hover, .ativo {
-    border-bottom: solid 5px chocolate;
+    border-bottom: solid 5px tomato;
 }
 
 .area_produtos {
@@ -98,7 +98,8 @@
     height: calc(100vh - 20.5vh);
     padding: 20px 0px;
     overflow: auto;
-    padding-top: 50px;
+    padding-top: 60px;
+    background-color: rgb(170, 170, 170);
 }
 
 .area_produtos::-webkit-scrollbar {

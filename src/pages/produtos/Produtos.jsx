@@ -2,9 +2,13 @@ import React, {useEffect, useState} from "react";
 import styles from "./Produtos.module.css"
 import { Search } from "./Search";
 import { Card } from "../../componentes/card/Card";
-import { useProdutsContext } from "../../ProdutsContext";
+import { CardsCart } from "../../componentes/card/CardsCart";
+import { useProdutsContext } from "../..//contexts/ProdutsContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Produtos = () =>{
+
+  const {auths} = useAuthContext()
 
   const {
       getValues_inputs,
@@ -70,7 +74,7 @@ export const Produtos = () =>{
                 className={styles.btn_add_produtos}
                 onClick={()=> {getValue_modal("flex"), clearinputs()}}
               >+</button>
-              <Card/>
+              {auths ? <Card/> : <CardsCart/>}
           </section>
           <section 
             style={{display:modal}}

@@ -1,50 +1,10 @@
 import React, {useState} from "react"
-import { useAuthContext } from "../../AuthContext" //recebendo a funçao  AuthContext
+import { useAuthContext } from "../../contexts/AuthContext" //recebendo a funçao  AuthContext
 import Styles from "./Login.module.css"
 
 export const Login = () =>{
     
-    const { User, hendleUser } = useAuthContext(); // recebendo funçao hendle_user  pelo AuthContext 
-
-    const [usuario, setusuario] = useState("")
-    const [Password, setPassword] = useState("")
-
-    const hendle_user = () => {
-        event.preventDefault()
-        let flow = false;
-    
-        if(usuario !== "" && Password !== ""){
-            flow = false
-            User.filter((e)=>{
-
-                if(usuario === e.nome && Password === e.password && e.adm === true){
-                    flow = true
-                    console.log(" adm autorizado")
-                    localStorage.setItem("User", JSON.stringify(true))
-                    hendleUser()
-                };
-                
-                if(usuario === e.nome && Password === e.password && e.adm === false){
-                    console.log("gerente autorizado")
-                    flow = true
-                    localStorage.setItem("User", JSON.stringify(false))
-                    hendleUser()
-                };
-            });
-
-            if(!flow){
-                alert("usuario incorreto")
-                flow = true
-            };
-    
-        };
-  
-        if(!flow){
-          alert("preencha todos os campos ")
-        }; 
-            
-      };
-
+    const {signInGoogle } = useAuthContext(); // recebendo funçao hendle_user  pelo AuthContext 
 
     return (
         <section className={Styles.container_login}>
@@ -73,10 +33,14 @@ export const Login = () =>{
                         />
                     </div>
                     <button
-                        onClick={()=> hendle_user()} // usando a funçao hendle_user vinda do AuthContext, passando os valores dos inputs d login
+                        // onClick={()=> hendle_user()} // usando a funçao hendle_user vinda do AuthContext, passando os valores dos inputs d login
                     >Login</button>
                 </form>
             </div>
+            <h4 
+             onClickCapture={()=> signInGoogle()}
+             className={Styles.google}
+             >Fazer Login com Google</h4>
         </section>
     )
 }

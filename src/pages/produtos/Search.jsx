@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from "./Produtos.module.css"
-import { useProdutsContext } from "../../ProdutsContext";
+import { useProdutsContext } from "../../contexts/ProdutsContext";
 
 
 export const Search = () =>{

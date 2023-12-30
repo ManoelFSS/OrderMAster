@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useState, useEffect} from "react";
 import { getDocs, getFirestore, collection, addDoc, doc, deleteDoc, updateDoc  } from "firebase/firestore"
-import { app } from "./FireaseConfig";
+import { app } from "../serices/FirebaseConfig";
 
 const ProdutsContext = createContext();
 
@@ -17,6 +17,7 @@ export const ProdutsProvider = ({ children }) => {
     const [descricao, setdescricao] = useState("")
     const [estoque, setestoque] = useState("")
     const [categoria, setcategoria] = useState("")
+    
     const [IdInput, setIdInput] = useState()
     const [Id, setId] = useState()
     

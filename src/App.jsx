@@ -1,19 +1,25 @@
 import React from 'react';
 import { Login } from './pages/login/Login';
 import {Painel} from "./pages/painel/Painel"
-import { useAuthContext } from "./AuthContext"
+import { useAuthContext } from "./contexts/AuthContext"
+
+
+
+
 function App() {
 
-  const {auth} = useAuthContext()
+  const {auths} = useAuthContext()
 
   return (
     <>
-      { auth === true || auth === false ? (
+      { auths === true || auths === false ? (
        <Painel/>
       ) : (
         <Login />
       )}
+
     </>
+    
   );
 }
 

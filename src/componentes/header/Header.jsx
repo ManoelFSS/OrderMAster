@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./Header.module.css"
-import { useAuthContext } from "../../AuthContext"
+import { useAuthContext } from "../../contexts/AuthContext"
 
 export const Header = () => {
 
-    const { hendleLogin, hendleToogle, toogle } = useAuthContext()
+    const {hendleLogin, hendleToogle, toogle } = useAuthContext()
 
     return (
         <header>

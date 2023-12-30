@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./Menu.module.css"
-import { useAuthContext } from "../../AuthContext"
+import { useAuthContext } from "../../contexts/AuthContext"
 
 export const Menu = () =>{
 
@@ -12,11 +12,11 @@ export const Menu = () =>{
             style={{left:toogle}}
         >
             <div className={styles.logo}>
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-kCI5xM6PSClj25D6sUZZk6wVwSZO84B7Q&usqp=CAU" alt="" />
-                <h2>Manoel</h2>
+                <img src={JSON.parse(localStorage.getItem("photo"))} alt="" />
+                <h2>{JSON.parse(localStorage.getItem("UserName")).split(" ")[0]}</h2>
             </div>
             <ul>
-                <li style={{backgroundColor:"chocolate"}}>Produtos</li>
+                <li style={{backgroundColor:"tomato"}}>Produtos</li>
                 <li>Clientes</li>
                 <li>Configurações</li>
             </ul>

@@ -1,8 +1,9 @@
 .painel{
-    background-color: #ffffff;
+    background-color: #f7f7f7;
     height: 100vh;
 }
 
 .container {
     flex: 1;
+    width: 100%;
 }

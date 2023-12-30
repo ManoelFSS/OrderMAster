@@ -15,7 +15,8 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
   const userCollectionRef = collection(db_app, "Users")
 
   const [User, setUser] = useState([])
-  const [auths, setAuth] = useState(JSON.parse(localStorage.getItem("User")))
+  // const [UserGoogle, setUserGoogle] = useState([])
+  const [auths, setAuth] = useState(JSON.parse(localStorage.getItem("User"))??[])
   const [toogle, setToogle] = useState("0px")
 
   const getUsers = async () => {
@@ -24,9 +25,11 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     setUser(result)
   }
 
+  
+
  
-    const signInGoogle = () => {
-      
+  const signInGoogle = () => {
+      getUsers()
       const auth = getAuth(app);
 
       if(User.length <= 0){
@@ -36,6 +39,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
               const credential = GoogleAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;
               const user = result.user;
+              // setUserGoogle(user.providerData[0])
               createUser(user.providerData[0])
               getUsers()
           }).catch((error) => {
@@ -45,20 +49,31 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
               const credential = GoogleAuthProvider.credentialFromError(error);
           });
       }else{
+        getUsers()
         console.log(User)
         signInWithPopup(auth, provider)
         .then((result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
-
+            // setUserGoogle(user.providerData[0])
             let checkedUser = false
             if(User){
-              getUsers()
+         
               User.map((e)=> {
-                if(e.email === user.providerData[0].email && e.token === user.providerData[0].uid){
+                if(e.email === user.providerData[0].email && e.token === user.providerData[0].uid && e.adm === true){
+                  console.log(e.adm)
                   console.log("usuario ja exite")
                   setAuth(e.adm)
+                  // setUserGoogle(user.providerData[0])
+                  localStorage.setItem("User", JSON.stringify(e.adm))
+                  localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
+                  localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
+                  checkedUser = true
+                }else{
+                  console.log("usuario ja exite")
+                  setAuth(e.adm)
+                  // setUserGoogle(user.providerData[0])
                   localStorage.setItem("User", JSON.stringify(e.adm))
                   localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
                   localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
@@ -68,6 +83,8 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
               })
             }
             if(!checkedUser){
+              getUsers()
+              // setUserGoogle(user.providerData[0])
               createUser(user.providerData[0])
               console.log("new usuario")
               setAuth(false)

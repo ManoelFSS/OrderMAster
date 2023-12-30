@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
 
       if(User.length <= 0){
           
-          signInWithPopup(auth, provider)
+        auth.signInWithRedirect(provider)
           .then((result) => {
               const credential = GoogleAuthProvider.credentialFromResult(result);
               const token = credential.accessToken;

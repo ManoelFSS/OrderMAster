@@ -3,9 +3,11 @@ import { getDocs, getFirestore, collection, addDoc } from "firebase/firestore"
 import {getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../serices/FirebaseConfig';
 
+
+
 const AuthContext = createContext(); // criando o context
-// const provider = new GoogleAuthProvider();
-const provider = new firebase.auth.GoogleAuthProvider();
+const provider = new GoogleAuthProvider();
+
 
 export const AuthProvider = ({ children }) => { // exportando a funçao que farar o provider , passando como paramentro children
  
@@ -22,9 +24,6 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     setUser(result)
   }
 
-
-
-  
  
     const signInGoogle = () => {
       

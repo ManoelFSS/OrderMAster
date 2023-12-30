@@ -9,7 +9,8 @@ export const CardsCart = () => {
             getValue_modal,
             deletaritem,
             getIdModalItem,
-            setToogle
+            setToogle,
+            setCautItem
         } = useProdutsContext()
    
     const getId = (id) => {
@@ -38,9 +39,17 @@ export const CardsCart = () => {
                         </div>
                         <div className={styles.contador}>
                             <section>
-                                <div>-</div>
-                                <div>0</div>
-                                <div>+</div>
+                                { (produto.status === true && produto.estoque === 0) || (produto.status === false && produto.estoque > 0) || (produto.status === true && produto.estoque > 0) || (produto.status === false && produto.estoque === 0)  ? 
+
+                                    <>
+                                        <h3>Indisponivel</h3>
+                                    </> :
+                                    <>
+                                        <div onClick={()=> setCautItem(produto.id, produto.contador - 1)}>-</div>
+                                        <div>{produto.contador}</div>
+                                        <div onClick={()=> setCautItem(produto.id, produto.contador + 1)}>+</div>
+                                    </>
+                                }
                             </section>
                         </div>
                         <h3 className={styles.tile_descricao}>Descrição</h3>

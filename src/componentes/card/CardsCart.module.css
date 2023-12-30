@@ -103,6 +103,11 @@
     color: #ffffff;
 }
 
+.contador h3 {
+    color: #ffffff;
+    text-transform: capitalize;
+}
+
 .contador  section div:nth-child(1){
     font-size: 40px;
     cursor: pointer;

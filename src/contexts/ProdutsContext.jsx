@@ -85,18 +85,24 @@ export const ProdutsProvider = ({ children }) => {
       getProduts()  
     }
 
+    
+    const setCautItem = async (id, caunt) => {
+      const newdoc = doc(db_app, "products",id)
+      const atualizar = {
+        contador:caunt >= 0 ? caunt : 0
+      }
+      await updateDoc(newdoc,atualizar)
+      getProduts()  
+    }
+
 
     const setToogle = async (id, toogle) => {
-
       const newdoc = doc(db_app, "products",id)
-
       const atualizar = {
         status:toogle
       }
-
       await updateDoc(newdoc,atualizar)
       getProduts()  
-
     }
 
 
@@ -143,8 +149,8 @@ export const ProdutsProvider = ({ children }) => {
           IdInput,
           setIdInput,
           setToogle,
+          setCautItem,
           
-
         }}>{children}</ProdutsContext.Provider>
     )
 }

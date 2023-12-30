@@ -4,7 +4,8 @@ import {getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../serices/FirebaseConfig';
 
 const AuthContext = createContext(); // criando o context
-const provider = new GoogleAuthProvider();
+// const provider = new GoogleAuthProvider();
+const provider = new firebase.auth.GoogleAuthProvider();
 
 export const AuthProvider = ({ children }) => { // exportando a funçao que farar o provider , passando como paramentro children
  

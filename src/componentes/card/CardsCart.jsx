@@ -39,7 +39,7 @@ export const CardsCart = () => {
                         </div>
                         <div className={styles.contador}>
                             <section>
-                                { (produto.status === true && produto.estoque === 0) || (produto.status === false && produto.estoque > 0) || (produto.status === true && produto.estoque > 0) || (produto.status === false && produto.estoque === 0)  ? 
+                                { (produto.status === true && produto.estoque === 0) || (produto.status === false && produto.estoque > 0) ? 
 
                                     <>
                                         <h3>Indisponivel</h3>

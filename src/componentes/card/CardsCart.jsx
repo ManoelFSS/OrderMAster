@@ -36,6 +36,13 @@ export const CardsCart = () => {
                                 <p>{parseFloat(produto.preco).toFixed(2)}</p>
                             </section>
                         </div>
+                        <div className={styles.contador}>
+                            <section>
+                                <div>-</div>
+                                <div>0</div>
+                                <div>+</div>
+                            </section>
+                        </div>
                         <h3 className={styles.tile_descricao}>Descrição</h3>
                         <div className={styles.footer_card}>
                             <span>{produto.descricao}</span>

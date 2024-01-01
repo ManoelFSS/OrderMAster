@@ -1,21 +1,23 @@
 import React, {useState} from "react";
 import styles from "./CardsCart.module.css"
 import { useProdutsContext } from "../../contexts/ProdutsContext";
-
+import { Contador } from "../contador/Contador";
 export const CardsCart = () => {
 
     const {
             produts,
-            getValue_modal,
-            deletaritem,
-            getIdModalItem,
-            setToogle,
+            // getValue_modal,
+            // deletaritem,
+            // getIdModalItem,
+            // setToogle,
             setCautItem
         } = useProdutsContext()
    
-    const getId = (id) => {
-        deletaritem(id)
-    }
+    // const getId = (id) => {
+    //     deletaritem(id)
+    // }
+
+   
     
     
 
@@ -45,13 +47,7 @@ export const CardsCart = () => {
                                         <h3>Indisponivel</h3>
                                     </> :
                                     <>
-                                        <div onClick={()=> setCautItem(produto.id, produto.contador - 1)}>-</div>
-                                        <div
-                                        style={{color: produto.contador > 0 ? "#7bff00" : "#fff" }}
-                                        >{
-                                            produto.contador
-                                        }</div>
-                                        <div onClick={()=> setCautItem(produto.id, produto.contador + 1)}>+</div>
+                                       <Contador index={produto.id} db_caunt={produto.contador}/> 
                                     </>
                                 }
                             </section>

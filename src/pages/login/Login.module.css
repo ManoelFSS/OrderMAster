@@ -6,7 +6,7 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
-    background:#000 url("https://blog.henrilustres.com.br/wp-content/uploads/2022/10/barjpg-scaled.jpg") no-repeat center / cover;
+    background:#000 url("https://img.restaurantguru.com/r5cf-Kabana-bar-e-petiscaria-logo.jpg") no-repeat center 100px /300px 300px;
 }
 
 .area_login {
@@ -89,7 +89,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 15px;
     position: relative;
     padding-left: 20px;
     cursor: pointer;
@@ -98,8 +98,8 @@
 .google::after{
     content: "a";
     position: absolute;
-    width: 30px;
-    width: 30px;
+    width: 25px;
+    width: 25px;
     left: 10px;
     font-size: 30px;
     color: transparent;

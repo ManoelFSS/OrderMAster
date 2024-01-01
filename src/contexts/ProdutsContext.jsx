@@ -79,6 +79,8 @@ export const ProdutsProvider = ({ children }) => {
         descricao:descricao,
         estoque:estoque,
         categoria:categoria,
+        contador:0,
+        
       }
 
       await updateDoc(newdoc,atualizar)

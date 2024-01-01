@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
 
   const [User, setUser] = useState([])
   const [auths, setAuth] = useState(JSON.parse(localStorage.getItem("User")))
-  const [toogle, setToogle] = useState("0px")
+  const [toogle, setToogle] = useState("-200px")
 
   const getUsers = async () => {
     const response = await getDocs(userCollectionRef)

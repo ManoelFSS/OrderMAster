@@ -8,7 +8,7 @@ export const Login = () =>{
 
     return (
         <section className={Styles.container_login}>
-            <div className={Styles.area_login}>
+            {/* <div className={Styles.area_login}>
                 <form action="#">
                     <div>
                         <label htmlFor="usuario">Usuário</label>
@@ -36,7 +36,7 @@ export const Login = () =>{
                         // onClick={()=> hendle_user()} // usando a funçao hendle_user vinda do AuthContext, passando os valores dos inputs d login
                     >Login</button>
                 </form>
-            </div>
+            </div> */}
             <h4 
              onClickCapture={()=> signInGoogle()}
              className={Styles.google}

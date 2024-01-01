@@ -46,7 +46,11 @@ export const CardsCart = () => {
                                     </> :
                                     <>
                                         <div onClick={()=> setCautItem(produto.id, produto.contador - 1)}>-</div>
-                                        <div>{produto.contador}</div>
+                                        <div
+                                        style={{color: produto.contador > 0 ? "#7bff00" : "#fff" }}
+                                        >{
+                                            produto.contador
+                                        }</div>
                                         <div onClick={()=> setCautItem(produto.id, produto.contador + 1)}>+</div>
                                     </>
                                 }

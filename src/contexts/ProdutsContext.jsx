@@ -89,13 +89,14 @@ export const ProdutsProvider = ({ children }) => {
 
     
     const setCautItem = async (caunt, id) => {
+    
       console.log(id)
       const newdoc = doc(db_app, "products",id)
       const atualizar = {
         contador:caunt > 0 ? caunt : 0,
       }
       await updateDoc(newdoc,atualizar)
-      getProduts()  
+      await getProduts() 
     }
 
 

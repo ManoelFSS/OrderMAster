@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import { useProdutsContext } from "../../contexts/ProdutsContext";
 
 export const Contador = (props) => {
+
+   
     
     const {
         setCautItem
@@ -10,10 +12,12 @@ export const Contador = (props) => {
 
     const [contador, setcontador] = useState(0)
 
+    console.log(props.db_caunt)
+    console.log(contador)
 
     const hendleCaunt = (item) => {
         console.log(item)
-        setcontador(item.target.innerHTML === "+" ? contador > 0 ? contador + 1 : props.db_caunt + 1 : contador > 0 ? contador - 1 : props.db_caunt - 1)
+        setcontador(item.target.innerHTML === "+" ? contador > 0 ? contador + 1 : props.db_caunt + 1 : contador > 0 ? contador - 1 : props.db_caunt > 0 ? props.db_caunt - 1 : 0)
     }
 
     return (

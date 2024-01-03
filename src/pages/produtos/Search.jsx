@@ -8,7 +8,7 @@ export const Search = () =>{
     const {categorias, getCategoriaFillter} = useProdutsContext()
 
     const menuAtivo = JSON.parse(localStorage.getItem("menuAtivo"))
-    const [categoriaAtiva, setCategoriaAtiva] = useState(menuAtivo ? JSON.parse(localStorage.getItem("menuAtivo")): "Todas" );
+    const [categoriaAtiva, setCategoriaAtiva] = useState(menuAtivo ? JSON.parse(localStorage.getItem("menuAtivo")): "" );
 
     const hendlecategoria_ativa = (item) => {
       setCategoriaAtiva(item);
@@ -45,5 +45,5 @@ export const Search = () =>{
             </div>
         </section>
     )
-    // className={index === categoriaAtiva ? styles.categoriaAtiva : ""}
+  
 }

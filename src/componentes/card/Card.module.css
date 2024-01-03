@@ -40,8 +40,9 @@
     box-shadow: 1px 3px 6px #000;
     text-transform: capitalize;
     border-radius: 6px;
-    font-size: 22px;
+    font-size: 20px;
     padding: 4px 0px;
+    text-transform: uppercase;
 }
 
 .area_text {

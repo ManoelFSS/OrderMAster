@@ -21,7 +21,7 @@ export const Card = () => {
     return (
         <>
             {
-               produts.map((produto)=>(
+             produts ?  produts.map((produto)=>(
                     <figure 
                         className={styles.card} key={produto.id}
                         style={{opacity:produto.status === true ?  produto.estoque <= 0 ? "0.4" : "1" : "0.4" }}
@@ -77,7 +77,7 @@ export const Card = () => {
                         </div>
                     </figure>
                 ))
-            }
+            :<h2>Error</h2>} 
             
         </>
     )

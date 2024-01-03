@@ -14,8 +14,8 @@ export const Produtos = () =>{
       getValues_inputs,
       modal,
       getValue_modal,
-      IdInput,
-      setIdInput,
+      editarItem,
+      setEditarItem,
       
   } = useProdutsContext()
     
@@ -26,8 +26,8 @@ export const Produtos = () =>{
   const [estoque, setestoque] = useState("")
   const [categoria, setcategoria] = useState("")
 
-
-  const hendleCamposInput = () => {
+  // função para pegar o produto especifico no localstorage e preencher os states, assim preenchendo os campos dos inputs  = [modal ] com as informaçoes do produto!
+  const editarProduto = () => {
     const ItemForm = JSON.parse(localStorage.getItem("db_item"))
   
     if (ItemForm && ItemForm.length > 0) {
@@ -41,17 +41,18 @@ export const Produtos = () =>{
   };
 
   useEffect(()=>{
-    if(IdInput){
-      hendleCamposInput()
+    if(editarItem){
+      editarProduto()
     }
-  },[IdInput])
-
-  const hendlecreate_card = () =>{
+  },[editarItem])
+  
+  //
+  const modalcreate_card = () =>{
       
     if(image !== "" && nome !== "" && preco !== "" && descricao !== "" && estoque !== "" && categoria !==""){
+      setEditarItem("")
       getValues_inputs(image, nome, preco, descricao, estoque, categoria)
       getValue_modal("none")
-      setIdInput("")
     }else{
       alert("Preencha todos os Campos")
     }
@@ -152,12 +153,12 @@ export const Produtos = () =>{
                       onChange={(e) => setcategoria(e.target.value)}
                     />
                   </div>
-                  <button onClick={()=> { hendlecreate_card() }}>{IdInput ? "Editar" : "Adicionar"}</button>
+                  <button onClick={()=> { modalcreate_card() }}>{editarItem ? "Editar" : "Adicionar"}</button>
                 </section>
               </form>
               <span 
                 className={styles.close_modal}
-                onClick={()=> {setIdInput(""), getValue_modal("none"), clearinputs()}}
+                onClick={()=> {setEditarItem(""), getValue_modal("none"), clearinputs()}}
               >X</span>
             </div>
           </section>

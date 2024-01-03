@@ -121,3 +121,31 @@
     outline: none;
     user-select: none;
 }
+
+
+.area_disponives {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;  
+    padding-left: 20px;
+    position: absolute;
+    right: 15px;
+    top: 50px;
+}
+.area_disponives h5 {
+    font-size: 16px;
+}
+
+.area_disponives span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: chocolate;
+    font-size: 20px;
+    border-bottom: solid 3px #000;
+    font-weight: bolder;
+    
+}

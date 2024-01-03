@@ -6,21 +6,9 @@ export const CardsCart = () => {
 
     const {
             produts,
-            // getValue_modal,
-            // deletaritem,
-            // getIdModalItem,
-            // setToogle,
-            setCautItem
+            setCautItem,
         } = useProdutsContext()
    
-    // const getId = (id) => {
-    //     deletaritem(id)
-    // }
-
-   
-    
-    
-
     return (
         <>
             {
@@ -37,6 +25,12 @@ export const CardsCart = () => {
                                 <h3>{produto.nome}</h3>
                                 <h5>Preço</h5>
                                 <p>{parseFloat(produto.preco).toFixed(2)}</p>
+                            </section>
+                            <section className={styles.area_disponives}>
+                                <h5>Disponiveis</h5>
+                                <span
+                                    style={{color: produto.estoque <= 0 ? "#000" : "chocolate"}}
+                                >{produto.estoque}</span>
                             </section>
                         </div>
                         <div className={styles.contador}>

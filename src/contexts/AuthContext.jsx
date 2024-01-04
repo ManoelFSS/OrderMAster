@@ -23,6 +23,9 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     const response = await getDocs(userCollectionRef)
     const  result = response.docs.map((doc) => ({...doc.data(), id: doc.id}))
     setUser(result)
+    if(!auths){
+      setReload_Localstorage()
+    }
   }
 
  

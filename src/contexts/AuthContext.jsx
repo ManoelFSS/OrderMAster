@@ -2,8 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'; /
 import { getDocs, getFirestore, collection, addDoc } from "firebase/firestore"
 import {getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from '../serices/FirebaseConfig';
-
-
+import { useProdutsContext } from './ProdutsContext';
 
 const AuthContext = createContext(); // criando o context
 const provider = new GoogleAuthProvider();
@@ -11,6 +10,8 @@ const provider = new GoogleAuthProvider();
 
 export const AuthProvider = ({ children }) => { // exportando a funçao que farar o provider , passando como paramentro children
  
+  const {setReload_Localstorage} = useProdutsContext()
+
   const db_app = getFirestore(app)
   const userCollectionRef = collection(db_app, "Users")
 
@@ -143,6 +144,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     }
 
     const hendleLogin = () => {
+      setReload_Localstorage()
       console.log("fechar")
       clearTimeout(time)
       const db_setstorage = localStorage.setItem("User", JSON.stringify(null))

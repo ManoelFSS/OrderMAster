@@ -173,6 +173,7 @@ export const ProdutsProvider = ({ children }) => {
           editarItem,
           setToogle,
           setCautItem,
+          setReload_Localstorage,
           
         }}>{children}</ProdutsContext.Provider>
     )

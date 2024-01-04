@@ -71,12 +71,13 @@ export const Produtos = () =>{
         <section className={styles.produts}>
           <Search/>
           <section className={styles.area_produtos}>
-            <button 
+            { auths ? <button 
                 className={styles.btn_add_produtos}
                 onClick={()=> {getValue_modal("flex"), clearinputs()}}
-              >+</button>
-              {auths ? <Card/> : <CardsCart/>}
-            </section>
+              >+</button>: <></>
+            }
+            {auths ? <Card/> : <CardsCart/>}
+          </section>
           <section 
             style={{display:modal}}
             className={styles.area_modal}

@@ -7,7 +7,7 @@
     background-color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 10px;
-    transform: scale(0.9);
+    /* transform: scale(0.9); */
     box-shadow: 5px 9px 20px #00000080;
     transition: all 0.3s;
 }

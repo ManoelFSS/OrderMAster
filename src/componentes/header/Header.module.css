@@ -3,15 +3,15 @@
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  height: 6vh;
-  padding-right: 14px;
+  padding: 20px 50px ;
   background-color: #000;
+
 }
 
 .banner {
-  height: 10vh;
+  height: 20vh;
   width: 100%;
-  background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIh5bEynBuMp7UQPDp1JM8psI4aPzgjjFJkpACxG8nrfa2Y0Mm5JO2JmYJpA4iqTumskM&usqp=CAU") no-repeat center / 400px 100%;
+  background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiktVtuAsaFhmJ-tpS5woUeFaEcgTjw7N0yAbA6eRVDqgOkKvgSgkEkesIgg6SeH4R2A&usqp=CAU") no-repeat center  / cover;
 }
 
 header h1 {
@@ -33,7 +33,7 @@ header h1 {
   width: 35px;
   border-radius: 10px;
   position: absolute;
-  left: 10px;
+  left: 50px;
   transition: all 0.4s;
   z-index: 100;
   cursor: pointer;

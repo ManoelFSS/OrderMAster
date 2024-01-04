@@ -112,13 +112,14 @@ export const ProdutsProvider = ({ children }) => {
 
 
     const setToogle = async (id, toogle) => {
-      setReload_Localstorage()
+      
 
       const newdoc = doc(db_app, "products",id)
       const atualizar = {
         status:toogle
       }
       await updateDoc(newdoc,atualizar)   
+      setReload_Localstorage()
       getProduts()
     }
 

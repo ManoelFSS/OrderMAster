@@ -30,7 +30,7 @@ export const CardsCart = () => {
                                 <h5>Disponiveis</h5>
                                 <span
                                     style={{color: produto.estoque <= 0 ? "#000" : "chocolate"}}
-                                >{produto.estoque}</span>
+                                >{produto.status === false ? 0 : produto.estoque}</span>
                             </section>
                         </div>
                         <div className={styles.contador}>

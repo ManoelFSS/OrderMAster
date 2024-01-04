@@ -16,7 +16,9 @@ export const Header = () => {
                 ></div>
                 <p onClick={()=> hendleLogin()}>Sair</p>
             </section>
-            <section className={styles.banner}></section>
+            <section className={styles.banner}>
+                <h2>Kbana Drinks</h2>
+            </section>
         </header>
     )
 }

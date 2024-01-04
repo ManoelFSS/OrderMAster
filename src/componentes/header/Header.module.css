@@ -1,3 +1,4 @@
+
 .area_toogle {
   display: flex;
   width: 100%;
@@ -5,13 +6,21 @@
   align-items: center;
   padding: 20px 50px ;
   background-color: #000;
-
+  /* position: fixed;
+  z-index: 222; */
 }
 
 .banner {
-  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  text-shadow: 1px 5px 5px tomato;
+  font-size: 35px;
+  min-height: 20vh;
   width: 100%;
-  background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiktVtuAsaFhmJ-tpS5woUeFaEcgTjw7N0yAbA6eRVDqgOkKvgSgkEkesIgg6SeH4R2A&usqp=CAU") no-repeat center  / cover;
+  background: #000 url("https://static.vecteezy.com/ti/photos-gratuite/p1/22514411-naturel-rustique-bois-toile-de-fond-vieilli-en-bois-texture-planches-pour-une-ancien-regardez-toile-de-fond-gratuit-photo.jpeg")  no-repeat center  / cover;
 }
 
 header h1 {

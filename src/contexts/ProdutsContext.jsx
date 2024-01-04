@@ -45,12 +45,13 @@ export const ProdutsProvider = ({ children }) => {
 
     // funçao criar/editar item no firebase
     async function criarProduto(image, nome, preco, descricao, estoque, categoria){
-     
+      setReload_Localstorage()
       event.preventDefault()
 
       if(editarItem){
         editaritem (editarItem,image, nome, preco, descricao, estoque, categoria)
         setEditarItem("")
+        setReload_Localstorage()
         getProduts()
       }else{
         
@@ -79,7 +80,7 @@ export const ProdutsProvider = ({ children }) => {
     
     // editar item no firebase 
     const  editaritem = async (id, image, nome, preco, descricao, estoque, categoria) => {
-      setReload_Localstorage()
+      
       const newdoc = doc(db_app, "products",id)
 
       const atualizar = {
@@ -93,6 +94,7 @@ export const ProdutsProvider = ({ children }) => {
       }
 
       await updateDoc(newdoc,atualizar)
+      setReload_Localstorage()
       getProduts()  
     }
 

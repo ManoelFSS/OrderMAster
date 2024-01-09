@@ -37,10 +37,11 @@ export const Login = () =>{
                     >Login</button>
                 </form>
             </div> */}
+            <img src="https://img.restaurantguru.com/r5cf-Kabana-bar-e-petiscaria-logo.jpg" alt="" />
             <h4 
-             onClickCapture={()=> signInGoogle()}
-             className={Styles.google}
-             >Fazer Login com Google</h4>
+                onClickCapture={()=> signInGoogle()}
+                className={Styles.google}
+            >Fazer Login com Google</h4>
         </section>
     )
 }

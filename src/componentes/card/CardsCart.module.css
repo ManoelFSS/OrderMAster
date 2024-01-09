@@ -1,5 +1,5 @@
 .card {
-    transform: scale(0.9);
+  
     width: 330px;
     height: 220px;
     background-color: rgb(255, 255, 255);
@@ -47,9 +47,11 @@
 }
 
 .card section:nth-child(2) p {
-   width: 70px;
-   padding: 5px 10px;
    font-weight: bolder;
+   display: flex;
+   justify-content: center;
+   width: 80px;
+
 }
 
 .card img {
@@ -57,7 +59,6 @@
     height:100px;
     border-radius: 10px;
     transform: scale(0.9);
-    border-radius: 50%;
     object-fit: cover;
 }
 
@@ -145,7 +146,6 @@
     height: 40px;
     color: chocolate;
     font-size: 20px;
-    border-bottom: solid 3px #000;
     font-weight: bolder;
     
 }

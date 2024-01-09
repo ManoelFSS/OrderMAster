@@ -1,13 +1,11 @@
 import React, {useState} from "react";
 import styles from "./CardsCart.module.css"
-import { useProdutsContext } from "../../contexts/ProdutsContext";
 import { Contador } from "../contador/Contador";
+import { useProdutsContext } from "../../contexts/ProdutsContext";
+
 export const CardsCart = () => {
 
-    const {
-            produts,
-            setCautItem,
-        } = useProdutsContext()
+    const {produts} = useProdutsContext()
    
     return (
         <>
@@ -41,7 +39,7 @@ export const CardsCart = () => {
                                         <h3>Indisponivel</h3>
                                     </> :
                                     <>
-                                       <Contador index={produto.id} db_caunt={produto.contador}/> 
+                                       <Contador index={produto.id} caunt={produto.contador} /> 
                                     </>
                                 }
                             </section>

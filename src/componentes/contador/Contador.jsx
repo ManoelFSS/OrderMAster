@@ -1,35 +1,41 @@
 import React, {useState} from "react";
+import styles from "./Contador.module.css"
 import { useProdutsContext } from "../../contexts/ProdutsContext";
 
 export const Contador = (props) => {
 
-   
-    
-    const {
-        setCautItem
-    } = useProdutsContext()
-
-
-    const [contador, setcontador] = useState(0)
-
-    console.log(props.db_caunt)
-    console.log(contador)
-
-    const hendleCaunt = (item) => {
-        console.log(item)
-        setcontador(item.target.innerHTML === "+" ? contador > 0 ? contador + 1 : props.db_caunt + 1 : contador > 0 ? contador - 1 : props.db_caunt > 0 ? props.db_caunt - 1 : 0)
+    const {getProduts} = useProdutsContext()
+    const hendleCaunt = (item, id) => {
+        
+        item.target.innerHTML === "+" ? props.caunt + 1 : props.caunt > 0 ? props.caunt  - 1 : 0  
+        const newProdutos = JSON.parse(localStorage.getItem("produtos"))
+        const posicaoOriginal = newProdutos.findIndex((e) => e.id === id)
+       
+        if(item.target.innerHTML === "+"){
+            newProdutos[posicaoOriginal].contador = props.caunt + 1
+            localStorage.setItem("produtos", JSON.stringify(newProdutos))
+            getProduts()
+            console.log(newProdutos)
+        }else{
+            newProdutos[posicaoOriginal].contador = props.caunt > 0 ? props.caunt - 1 : 0
+            localStorage.setItem("produtos", JSON.stringify(newProdutos))
+            getProduts()
+            console.log(newProdutos)
+        }
+        
     }
 
     return (
-        <>
-            <div onClick={(item)=> {hendleCaunt(item), setCautItem(contador <= 0 ? props.db_caunt - 1 : contador - 1, props.index)}}>-</div>
+        <section>
+            <div onClick={(item)=>  hendleCaunt(item, props.index)}>-</div>
             <div
-            style={{color: props.db_caunt <= 0 ? "#fff" : "#7bff00" }}
+            className={styles.contador}
+            style={{color: props.caunt  <= 0 ? "#fff" : "#7bff00" }}
             >{
-               contador > 0 ? contador : props.db_caunt
+                props.caunt 
             }</div>
-            <div onClick={(item)=>{ hendleCaunt(item), setCautItem(contador <= 0 ? props.db_caunt + 1 : contador + 1 , props.index)}}>+</div>
-        </>
+            <div onClick={(item) =>  hendleCaunt(item, props.index)}>+</div>
+        </section>
         
     )
 }

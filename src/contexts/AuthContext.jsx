@@ -17,15 +17,15 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
 
   const [User, setUser] = useState([])
   const [auths, setAuth] = useState(JSON.parse(localStorage.getItem("User")))
-  const [toogle, setToogle] = useState("-200px")
+  const [toogle, setToogle] = useState("-310px")
 
   const getUsers = async () => {
     const response = await getDocs(userCollectionRef)
     const  result = response.docs.map((doc) => ({...doc.data(), id: doc.id}))
     setUser(result)
-    if(!auths){
-      setReload_Localstorage()
-    }
+    // if(!auths){
+    //   setReload_Localstorage()
+    // }
   }
 
  
@@ -128,7 +128,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
       const db_storage = JSON.parse(localStorage.getItem("User"))
       setAuth(db_storage)
       if(db_storage === true || db_storage === false){
-          console.log("reload")
+       
         reloadTime()
       }
   

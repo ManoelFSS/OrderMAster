@@ -1,0 +1,80 @@
+
+.carrinho_compras {
+    width: 320px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: -4px 0px 10px #7e7e7e8c;
+    padding: 70px 0px;
+    display:;
+}
+
+.carrinho_compras section {
+    display: flex;
+    width: 100%;
+    border-bottom: solid #7a7a7a54 2px;
+    padding: 5px;
+}
+
+.carrinho_compras img{
+    width: 60px;
+    height: 60px;
+}
+
+.contador {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.contador .are_infor {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.contador .are_infor h3 {
+    font-size: 14px;
+    border-bottom: solid 2px tomato;
+    text-transform: capitalize;
+    
+}
+
+.contador .are_infor p {
+    font-size: 12px;
+    width: 80px;
+   
+}
+
+.area_contador {
+    display: flex;
+    align-items: center;
+}
+
+.area_contador section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    color: #fff;
+    padding: 6px 15px;
+    gap: 15px;
+}
+
+.area_preco_total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 12px;
+    gap: 5px;
+    text-align: center;
+   
+}
+
+.area_preco_total h4 {
+    border-bottom:  solid 2px tomato;
+}

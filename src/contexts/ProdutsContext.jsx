@@ -10,7 +10,6 @@ export const ProdutsProvider = ({ children }) => {
     const [modal, setModal] = useState("none")
     const [categorias, setcategorias] = useState([])
     const [editarItem, setEditarItem] = useState()// controla se o produto  vai ser editado  ou criado  se o valor for| true edita  | false cria seu valor e o proprio id 
-   
 
     const getFillterCategoria = JSON.parse(localStorage.getItem("menuAtivo"))
     const [fillterCategoria, setfillterCategoria] =  useState(getFillterCategoria === null ? localStorage.setItem("menuAtivo", JSON.stringify("Todas")) : JSON.parse(localStorage.getItem("menuAtivo")) ) //localStorage.setItem("menuAtivo", JSON.stringify("Todas"))
@@ -19,13 +18,15 @@ export const ProdutsProvider = ({ children }) => {
     const userCollectionRef = collection(db_app, "products")
   
     const getProduts = async () => {
+      
       const response = await getDocs(userCollectionRef)
       const  result = response.docs.map((doc) => ({...doc.data(), id: doc.id}))
 
       const getLocalstorage_produtos = JSON.parse(localStorage.getItem("produtos"))
       getLocalstorage_produtos  === null ? localStorage.setItem("produtos", JSON.stringify(result)) : ""  // observa se no localstorage existe, se for null pega o result do firebase e armazena no localstorage
       setProduts(JSON.parse(localStorage.getItem("produtos"))) // pega os produtos do localstorage e guarda dentro do sstate produts assim e enviad0 por context para o componente card
-
+      
+      
       if(getLocalstorage_produtos){// se for true entra e faz o fillter dos produtos
         
         const itemfiltrado = getLocalstorage_produtos.filter((filtro) => fillterCategoria === " " || fillterCategoria === "Todas" ? filtro.categoria : filtro.nome.toLowerCase().includes(fillterCategoria.toLowerCase()) || filtro.categoria.toLowerCase().includes(fillterCategoria.toLowerCase()))
@@ -34,7 +35,7 @@ export const ProdutsProvider = ({ children }) => {
         const categoriafitrada = getLocalstorage_produtos.map((item)=> item.categoria) // pega todos os tems  do localstorage faz o map pegando todos os nomes de categorias
         const categoriasUnicas = new Set(categoriafitrada);// new Set retorna um novo array de categoria unicas sem repetir os nomes
         setcategorias(categoriasUnicas)// guarda todos os nome de categoria no state categoria, assim e passado por context para componente search e feito o map para renderizar os nomes das categorias
-        console.log(itemfiltrado)
+       
         if(itemfiltrado <= 0){
           localStorage.setItem("menuAtivo", JSON.stringify("Todas"))
           window.location.reload()
@@ -42,6 +43,8 @@ export const ProdutsProvider = ({ children }) => {
       }
       
     }
+
+  
 
     // funçao criar/editar item no firebase
     async function criarProduto(image, nome, preco, descricao, estoque, categoria){
@@ -158,6 +161,7 @@ export const ProdutsProvider = ({ children }) => {
       criarProduto(image, nome, preco, descricao, estoque,categoria)
     }
 
+
     useEffect(()=>{
         getProduts()
      },[fillterCategoria, getFillterCategoria])
@@ -165,6 +169,7 @@ export const ProdutsProvider = ({ children }) => {
     return (
         <ProdutsContext.Provider value={{ 
           produts, 
+          setProduts,
           getValues_inputs, 
           deletaritem, 
           modal, 
@@ -177,7 +182,10 @@ export const ProdutsProvider = ({ children }) => {
           setToogle,
           setCautItem,
           setReload_Localstorage,
-          
+          getProduts,
+         
+         
+        
         }}>{children}</ProdutsContext.Provider>
     )
 }

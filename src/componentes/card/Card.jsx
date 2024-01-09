@@ -16,7 +16,6 @@ export const Card = () => {
         deletaritem(id)
     }
     
-    
 
     return (
         <>

@@ -5,6 +5,7 @@
     border-radius: 10px;
     position: relative;
     box-shadow: 1px 2px 6px #00000044;
+    transform: scale(0.9);
 }
 
 .card div {

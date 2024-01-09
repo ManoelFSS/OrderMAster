@@ -7,8 +7,8 @@ export const Carrinho_compras = () => {
     
 
    
-    const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos"))
-    const produtoFiltrado = getLocalstorageProduts.filter((e)=> e.contador > 0 )
+    const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
+    const produtoFiltrado = getLocalstorageProduts ? getLocalstorageProduts.filter((e)=> e.contador > 0 ) : ""
     
     localStorage.setItem("carrinho", JSON.stringify(produtoFiltrado))
     

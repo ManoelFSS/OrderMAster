@@ -99,6 +99,7 @@
 .container_produtos {
   width: 100%;
   display: flex;
+  padding: 10px 0px;
   justify-content: center;
 }
 
@@ -106,7 +107,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width:calc(100% - 300px);
+    width:calc(100%);
     height: calc(100vh - 31.7vh);
     padding: 20px 0px;
     overflow: auto;

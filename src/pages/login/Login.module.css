@@ -8,6 +8,10 @@
     background-color: #000;
 }
 
+.container_login img {
+    width: 280px;
+    height: 280px;
+}
 
 .area_login {
     width: 300px;

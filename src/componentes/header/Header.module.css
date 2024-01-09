@@ -10,12 +10,12 @@ header {
   padding-right: 40px;
   background-color: #000;
   gap: 80px;
-  position: relative;
+  position: fixed;
   z-index: 111;
 }
 
 .banner {
-  min-height: 20vh;
+  min-height: 40vh;
   width: 100%;
   background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIh5bEynBuMp7UQPDp1JM8psI4aPzgjjFJkpACxG8nrfa2Y0Mm5JO2JmYJpA4iqTumskM&usqp=CAU") no-repeat center / 320px 100%;
 }

@@ -5,7 +5,8 @@ import { useAuthContext } from "../../contexts/AuthContext"
 export const Header = () => {
 
     const {hendleLogin, hendleToogle, toogle } = useAuthContext()
-    const  filterCarrinho = JSON.parse(localStorage.getItem("produtos")).filter((e)=> e.contador > 0 )
+    const get_produtos = JSON.parse(localStorage.getItem("produtos"))
+    const  filterCarrinho = get_produtos ?  get_produtos.filter((e)=> e.contador > 0 ) : ""
   
 
     return (

@@ -9,6 +9,8 @@
     top: 0;
     transition: all 0.3s;
     z-index: 99;
+    overflow: auto;
+    padding: 10px 10px;
     
 }
 

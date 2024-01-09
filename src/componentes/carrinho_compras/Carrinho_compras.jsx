@@ -1,11 +1,11 @@
 import React, {useEffect} from "react";
 import styles from "./Carrinho.module.css"
 import { Contador } from "../contador/Contador";
-import { useProdutsContext } from "../../contexts/ProdutsContext";
+import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Carrinho_compras = () => {
     
-
+    const {cart} = useAuthContext()
    
     const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
     const produtoFiltrado = getLocalstorageProduts ? getLocalstorageProduts.filter((e)=> e.contador > 0 ) : ""
@@ -13,7 +13,10 @@ export const Carrinho_compras = () => {
     localStorage.setItem("carrinho", JSON.stringify(produtoFiltrado))
     
     return (
-      <aside className={styles.carrinho_compras}>
+      <aside 
+        className={styles.carrinho_compras}
+        style={{marginRight: cart}}
+      >
         { produtoFiltrado.map(
           (card) =>
             card.contador > 0 && (

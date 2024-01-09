@@ -4,7 +4,7 @@ import { useAuthContext } from "../../contexts/AuthContext"
 
 export const Header = () => {
 
-    const {hendleLogin, hendleToogle, toogle, auths } = useAuthContext()
+    const {hendleLogin, hendleToogle, toogle, auths, hendleCart, cart } = useAuthContext()
     const get_produtos = JSON.parse(localStorage.getItem("produtos"))
     const  filterCarrinho = get_produtos ?  get_produtos.filter((e)=> e.contador > 0 ) : ""
   
@@ -22,7 +22,10 @@ export const Header = () => {
                 <p onClick={()=> hendleLogin()}>Sair</p>
                 { !auths && 
                     (
-                        <div className={styles.carrinho}>
+                        <div 
+                            className={styles.carrinho}
+                            onClick={() => hendleCart( cart === "-430px" ? "0px" : "-430px")}
+                        >
                             <span
                                 style={{color:filterCarrinho.length > 0 ? "#73ff00" : "tomato"}}
                             >{filterCarrinho.length}</span>

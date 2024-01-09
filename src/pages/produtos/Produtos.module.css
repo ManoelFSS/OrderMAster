@@ -34,7 +34,7 @@
    position:absolute;
    width: 100%;
 
-    z-index: 111;
+    z-index:99;
 }
 .input_area{
     display: flex;
@@ -117,7 +117,7 @@
     background-color: rgb(255, 255, 255);
 }
 
-@media (min-width:700px) {
+@media (min-width:820px) and (max-width:832px) {
   .area_produtos {
     height: calc(100vh - 14vh);
   }

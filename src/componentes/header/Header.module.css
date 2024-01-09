@@ -21,7 +21,7 @@ header {
   background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIh5bEynBuMp7UQPDp1JM8psI4aPzgjjFJkpACxG8nrfa2Y0Mm5JO2JmYJpA4iqTumskM&usqp=CAU") no-repeat fixed center 0px  / 300px 200px;
 }
 
-@media (min-width:700px){
+@media (min-width:820px) and (max-width:832px){
   .banner {
     height: 50vh;
      background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIh5bEynBuMp7UQPDp1JM8psI4aPzgjjFJkpACxG8nrfa2Y0Mm5JO2JmYJpA4iqTumskM&usqp=CAU") no-repeat fixed center 20px  / 390px 140px;
@@ -63,6 +63,7 @@ header h1 {
 
  .carrinho {
   position: relative;
+  cursor: pointer;
   width: 40px;
   height: 40px;
   background-color: blanchedalmond;

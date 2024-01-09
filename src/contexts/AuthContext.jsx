@@ -158,6 +158,11 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
       setToogle(toogle)
     }
 
+    const [cart, setCart] = useState("-430px")
+    const hendleCart = (cart_toogle) => {
+      setCart(cart_toogle)
+    }
+
     return ( // usando e retornando o Appcontext.provider e passando o children, passando valores como props  pelo value 
       <AuthContext.Provider value={{ 
         User, 
@@ -166,6 +171,8 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
         hendleToogle, 
         toogle,
         signInGoogle,
+        hendleCart,
+        cart,
 
         }}>
         {children}

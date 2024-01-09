@@ -119,7 +119,7 @@
 
 @media (min-width:700px) {
   .area_produtos {
-    height: calc(100vh - 17vh);
+    height: calc(100vh - 14vh);
   }
 }
 

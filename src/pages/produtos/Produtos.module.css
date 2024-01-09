@@ -117,9 +117,33 @@
     background-color: rgb(255, 255, 255);
 }
 
+@media (min-width:900px) and (max-width:932px) {
+  .area_produtos {
+    height: calc(100vh - 14vh);
+  }
+}
+
 @media (min-width:820px) and (max-width:832px) {
   .area_produtos {
-    height: calc(100vh - 17.6vh);
+    height: calc(100vh - 18.4vh);
+  }
+}
+
+@media (min-width:320px) and (max-width:376px) {
+  .area_produtos {
+    height: calc(100vh - 7.2vh);
+  }
+}
+
+@media (min-width:377px) and (max-width:430px) {
+  .area_produtos {
+    height: calc(100vh - 6.6vh);
+  }
+}
+
+@media (min-width:425px) and (max-width:450px) {
+  .area_produtos {
+    height: calc(100vh - 7.2vh);
   }
 }
 

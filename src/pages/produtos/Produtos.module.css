@@ -117,15 +117,15 @@
     background-color: rgb(255, 255, 255);
 }
 
-@media (min-width:900px) and (max-width:932px) {
+@media (min-width:700px) and (max-width:932px) {
   .area_produtos {
     height: calc(100vh - 14vh);
   }
 }
 
-@media (min-width:820px) and (max-width:1632px) {
+@media (min-width:933px) and (max-width:1632px) {
   .area_produtos {
-    height: calc(100vh - 18.6vh);
+    height: calc(100vh - 14.6vh);
   }
 }
 
@@ -137,7 +137,7 @@
 
 @media (min-width:377px) and (max-width:430px) {
   .area_produtos {
-    height: calc(100vh - 6.6vh);
+    height: calc(100vh - 7vh);
   }
 }
 

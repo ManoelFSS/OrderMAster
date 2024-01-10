@@ -117,7 +117,7 @@
     background-color: rgb(255, 255, 255);
 }
 
-@media (min-width:900px) and (max-width:1300px) {
+@media (min-width:900px) and (max-width:1620px) {
   .area_produtos {
     height: calc(100vh - 14vh);
   }

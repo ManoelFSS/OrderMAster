@@ -77,9 +77,19 @@
     justify-content: center;
     background-color: rgb(0, 0, 0);
     color: #ffffff;
-    padding: 6px 15px;
+    padding: 6px 10px;
     gap: 15px;
-    width: 80px;
+    width: 100px;
+    font-size: 20px;
+}
+
+.area_contador section div:nth-child(1), .area_contador section div:nth-child(3) {
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 28px;
 }
 
 .area_preco_total {

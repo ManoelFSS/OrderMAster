@@ -28,7 +28,7 @@ header {
   }
 }
 
-@media (min-width:900px) and (max-width:1300px){
+@media (min-width:900px) and (max-width:1620px){
   .banner {
     height: 50vh;
      background: #000 url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIh5bEynBuMp7UQPDp1JM8psI4aPzgjjFJkpACxG8nrfa2Y0Mm5JO2JmYJpA4iqTumskM&usqp=CAU") no-repeat fixed center 20px  / 390px 140px;

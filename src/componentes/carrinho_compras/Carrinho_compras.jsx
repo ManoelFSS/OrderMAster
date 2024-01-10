@@ -5,7 +5,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Carrinho_compras = () => {
     
-    const {cart} = useAuthContext()
+    const {cart,} = useAuthContext()
    
     const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
     const produtoFiltrado = getLocalstorageProduts ? getLocalstorageProduts.filter((e)=> e.contador > 0 ) : ""
@@ -15,7 +15,7 @@ export const Carrinho_compras = () => {
     return (
       <aside 
         className={styles.carrinho_compras}
-        style={{marginRight: cart}}
+        style={produtoFiltrado.length > 0 ? {marginRight: cart} : {marginRight: "-420px"}}
       >
         { produtoFiltrado.map(
           (card) =>

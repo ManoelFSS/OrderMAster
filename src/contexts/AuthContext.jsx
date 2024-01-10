@@ -173,6 +173,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
         signInGoogle,
         hendleCart,
         cart,
+        setCart,
 
         }}>
         {children}

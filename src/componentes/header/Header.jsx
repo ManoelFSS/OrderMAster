@@ -11,9 +11,6 @@ export const Header = () => {
 
     return (
         <header>
-            <section className={styles.banner}>
-                
-            </section>
             <section className={styles.area_toogle}>
                 <div 
                     className={styles.toogle}

@@ -117,15 +117,15 @@
     background-color: rgb(255, 255, 255);
 }
 
-@media (min-width:900px) and (max-width:1620px) {
+@media (min-width:900px) and (max-width:932px) {
   .area_produtos {
     height: calc(100vh - 14vh);
   }
 }
 
-@media (min-width:820px) and (max-width:832px) {
+@media (min-width:820px) and (max-width:1632px) {
   .area_produtos {
-    height: calc(100vh - 18.4vh);
+    height: calc(100vh - 18.6vh);
   }
 }
 

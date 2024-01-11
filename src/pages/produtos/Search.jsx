@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./Produtos.module.css"
 import { useProdutsContext } from "../../contexts/ProdutsContext";
 
@@ -16,16 +16,17 @@ export const Search = () =>{
       getCategoriaFillter(item)
     };
 
+ 
     return (
         <section className={styles.search_container}>
             <div className={styles.search_input}>
                 <div className={styles.input_area}>
+                    <h2>Categorias</h2>
                     <input 
                         type="text" 
                         placeholder="Pesquisar Produto" 
                         onChange={(e)=> hendlecategoria_ativa(e.target.value) }
                     />
-                     <h2>Categorias</h2>
                 </div>
             </div>
             <div className={styles.search_categorias}>

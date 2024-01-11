@@ -6,11 +6,14 @@ import { useProdutsContext } from "../../contexts/ProdutsContext";
 export const CardsCart = () => {
 
     const {produts} = useProdutsContext()
+
+    if (produts.length <= 0) {
+        return <h4 className={styles.error}>Ops, Produto não encontrado!!</h4>;
+    }
    
     return (
         <>
-            {
-               produts.map((produto)=>(
+            { produts.map((produto)=>(
                     <section 
                         key={produto.id} className={styles.card}
                         style={{opacity:produto.status === true ?  produto.estoque <= 0 ? "0.4" : "1" : "0.4" }}
@@ -51,7 +54,6 @@ export const CardsCart = () => {
                    </section>
                 ))
             }
-            
         </>
     )
 }

@@ -13,6 +13,7 @@ export const ProdutsProvider = ({ children }) => {
 
     const getFillterCategoria = JSON.parse(localStorage.getItem("menuAtivo"))
     const [fillterCategoria, setfillterCategoria] =  useState(getFillterCategoria === null ? localStorage.setItem("menuAtivo", JSON.stringify("Todas")) : JSON.parse(localStorage.getItem("menuAtivo")) ) //localStorage.setItem("menuAtivo", JSON.stringify("Todas"))
+   
 
     const db_app = getFirestore(app)
     const userCollectionRef = collection(db_app, "products")
@@ -30,15 +31,16 @@ export const ProdutsProvider = ({ children }) => {
       if(getLocalstorage_produtos){// se for true entra e faz o fillter dos produtos
         
         const itemfiltrado = getLocalstorage_produtos.filter((filtro) => fillterCategoria === " " || fillterCategoria === "Todas" ? filtro.categoria : filtro.nome.toLowerCase().includes(fillterCategoria.toLowerCase()) || filtro.categoria.toLowerCase().includes(fillterCategoria.toLowerCase()))
-        setProduts(itemfiltrado) // envia os produtos filtrados para  state produts 
-        
+         setProduts(itemfiltrado) // envia os produtos filtrados para  state produts 
+        console.log(itemfiltrado.length)
         const categoriafitrada = getLocalstorage_produtos.map((item)=> item.categoria) // pega todos os tems  do localstorage faz o map pegando todos os nomes de categorias
         const categoriasUnicas = new Set(categoriafitrada);// new Set retorna um novo array de categoria unicas sem repetir os nomes
         setcategorias(categoriasUnicas)// guarda todos os nome de categoria no state categoria, assim e passado por context para componente search e feito o map para renderizar os nomes das categorias
        
-        if(itemfiltrado <= 0){
+        if(itemfiltrado.length <= 0){
+          
           localStorage.setItem("menuAtivo", JSON.stringify("Todas"))
-          window.location.reload()
+      
         }
       }
       

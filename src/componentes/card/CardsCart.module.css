@@ -4,7 +4,7 @@
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
     position: relative;
-    box-shadow: 1px 2px 6px #00000044;
+    box-shadow: 1px 4px 20px #00000044;
     transform: scale(0.8);
 }
 
@@ -13,6 +13,7 @@
         min-width: 365px;
     }
 }
+
 
 .error {
     font-size: 20px;
@@ -43,6 +44,7 @@
     flex-direction: column;
     padding: 5px;
     justify-content: center;
+    
 }
 
 .card section:nth-child(2) h3 {
@@ -109,17 +111,17 @@
 
 .contador section {
     display: flex;
-    width: 60%;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
 }
 
 .contador section div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
+    padding: 3px 20px;
+    font-size: 25px;
     color: #ffffff;
+    outline: none;
+    user-select: none;
+   
 }
 
 .contador h3 {
@@ -128,12 +130,11 @@
 }
 
 .contador  section div:nth-child(1){
-    font-size: 40px;
     cursor: pointer;
-    margin-bottom: 8px;
-    outline: none;
-    user-select: none;
-    
+    font-weight: bolder;
+    font-size: 30px;
+    padding-bottom: 6px;
+   
 }
 
 .contador div:nth-child(3){

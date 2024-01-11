@@ -88,7 +88,7 @@
 
 .search_categorias ol{
    display: flex;
-   width: 95vw;
+   width: 100vw;
    align-items: center;
    justify-content: center;
    background-color: rgb(255, 255, 255) ;

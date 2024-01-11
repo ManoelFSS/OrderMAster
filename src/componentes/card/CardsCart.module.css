@@ -1,5 +1,5 @@
 .card {
-    width: 300px;
+    width: 330px;
     height: 200px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -8,8 +8,14 @@
     transform: scale(0.8);
 }
 
+@media (max-width:460px){
+    .card {
+        min-width: 365px;
+    }
+}
+
 .error {
-    font-size: 22px;
+    font-size: 20px;
     display:flex ;
     justify-content: center;
     align-items: center;

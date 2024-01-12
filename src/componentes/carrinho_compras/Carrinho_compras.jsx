@@ -50,9 +50,15 @@ export const Carrinho_compras = () => {
               )
           )}
         </div>
-        <div className={styles.area_valorTotal}>
-          <h3>Valor Total:</h3>
-          <span>{totalGeral.toFixed(2)}</span>
+        <div className={styles.footer_carrinho}>
+          <div>
+            <button>Fazer Pedido</button>
+          </div>
+          <div className={styles.area_valorTotal}>
+            <h3>Valor Total:</h3>
+            <span>{totalGeral.toFixed(2)}</span>
+            
+          </div>
         </div>
       </aside>
     );

@@ -1,8 +1,8 @@
 
 .carrinho_compras {
-    height: 100vh;
+    
     position: fixed;
-    top: 0;
+    top: 150px;
     right: 0;
     background-color: #fff;
     box-shadow: -4px 0px 10px #7e7e7e8c;
@@ -14,12 +14,24 @@
 }
 
 .area_produtos {
-   
     overflow: auto;
-    height:60vh;
- 
+    height:76vh;
+}
+
+@media (max-width:900px) {
+    .area_produtos {
+        overflow: auto;
+        height:73.3vh;
+    }
 }
    
+.area_produtos::-webkit-scrollbar {
+    width: 5px;
+}
+.area_produtos::-webkit-scrollbar-thumb {
+    background-color: chocolate; /* cor do polegar da barra de rolagem */
+  }
+
 
 @media (max-width:430px){
     .carrinho_compras {
@@ -126,13 +138,40 @@
     justify-content: center;
     align-items: center;
     padding: 5px 10px 5px 0px;
-   
     gap: 5px;
     text-align: center;
-   
-   
 }
 
 .area_preco_total h4 {
     border-bottom:  solid 2px tomato;
+}
+
+.footer_carrinho {
+    padding: 20px 20px 20px 10px;
+    width: 100%;
+    background-color: #000000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-end;
+}
+
+.area_valorTotal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer_carrinho button {
+    padding: 8px 10px;
+    background-color: tomato;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: bolder;
+}
+.area_valorTotal  span {
+    color: rgb(102, 255, 0);
 }

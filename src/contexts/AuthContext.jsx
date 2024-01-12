@@ -29,59 +29,18 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
   }
 
  
-    const signInGoogle = () => {
-      
-      const auth = getAuth(app);
+  const signInGoogle = () => {
+    
+    const auth = getAuth(app);
 
-      if(User.length <= 0){
-          
-        auth.signInWithRedirect(provider)
-          .then((result) => {
-              const credential = GoogleAuthProvider.credentialFromResult(result);
-              const token = credential.accessToken;
-              const user = result.user;
-              createUser(user.providerData[0])
-              getUsers()
-          }).catch((error) => {
-              const errorCode = error.code;
-              const errorMessage = error.message;
-              const email = error.customData.email;
-              const credential = GoogleAuthProvider.credentialFromError(error);
-          });
-      }else{
-        console.log(User)
-        signInWithPopup(auth, provider)
+    if(User.length <= 0){
+        
+      auth.signInWithRedirect(provider)
         .then((result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const token = credential.accessToken;
             const user = result.user;
-
-            let checkedUser = false
-            if(User){
-              getUsers()
-              User.map((e)=> {
-                if(e.email === user.providerData[0].email && e.token === user.providerData[0].uid){
-                  console.log("usuario ja exite")
-                  setAuth(e.adm)
-                  localStorage.setItem("User", JSON.stringify(e.adm))
-                  localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
-                  localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
-                  console.log(User[0].adm)
-                  checkedUser = true
-                }
-              })
-            }
-            if(!checkedUser){
-              createUser(user.providerData[0])
-              console.log("new usuario")
-              setAuth(false)
-              localStorage.setItem("User", JSON.stringify(false))
-              localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
-              localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
-              checkedUser = false
-              signInGoogle()
-            }
-            
+            createUser(user.providerData[0])
             getUsers()
         }).catch((error) => {
             const errorCode = error.code;
@@ -89,9 +48,51 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
             const email = error.customData.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
         });
-      }
+    }else{
+      console.log(User)
+      signInWithPopup(auth, provider)
+      .then((result) => {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          const user = result.user;
+
+          let checkedUser = false
+          if(User){
+            setAuth('')
+            getUsers()
+            User.map((e)=> {
+              if(e.email === user.providerData[0].email && e.token === user.providerData[0].uid){
+                console.log("usuario ja exite")
+                setAuth(e.adm)
+                localStorage.setItem("User", JSON.stringify(e.adm))
+                localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
+                localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
+                console.log(User[0].adm)
+                checkedUser = true
+              }
+            })
+          }
+          if(!checkedUser){
+            createUser(user.providerData[0])
+            console.log("new usuario")
+            setAuth(false)
+            localStorage.setItem("User", JSON.stringify(false))
+            localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
+            localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
+            checkedUser = false
+            signInGoogle()
+          }
+          
+          getUsers()
+      }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          const email = error.customData.email;
+          const credential = GoogleAuthProvider.credentialFromError(error);
+      });
     }
-    
+  }
+  
   
   
 
@@ -152,6 +153,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
       clearTimeout(time)
       const db_setstorage = localStorage.setItem("User", JSON.stringify(null))
       setAuth(db_setstorage)
+      window.location.reload()
     }
 
     const hendleToogle = (toogle) => {

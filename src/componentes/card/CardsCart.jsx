@@ -67,7 +67,7 @@ export const CardsCart = () => {
                                         <h3>Indisponivel</h3>
                                     </> :
                                     <>
-                                       <Contador index={produto.id} caunt={produto.contador} /> 
+                                       <Contador index={produto.id} caunt={produto.contador} estoque={produto.estoque} /> 
                                     </>
                                 }
                             </section>

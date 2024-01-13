@@ -40,7 +40,7 @@ export const Carrinho_compras = () => {
                     </div>
                   </div>
                   <div className={styles.area_contador}>
-                    <Contador  index={card.id} caunt={card.contador}/>
+                    <Contador  index={card.id} caunt={card.contador} estoque={card.estoque}/>
                   </div>
                   <div className={styles.area_preco_total}>
                     <h4>Total</h4>

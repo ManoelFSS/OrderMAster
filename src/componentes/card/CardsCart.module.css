@@ -18,13 +18,21 @@
 .error {
     font-size: 20px;
     display:flex ;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 25vh);
     color: #ff0000;
     font-weight: bolder;
-    background:url("https://www.nicepng.com/png/full/187-1873818_png-file-svg-error-icon.png") no-repeat center 130px / 150px 150px;
+    gap: 20px;
+    font-size: 12px;
     width: 100%;
+}
+
+.error img {
+    width: 60px;
+    height: 60px;
+    display:flex;
 }
 
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./CardsCart.module.css"
 import { Contador } from "../contador/Contador";
 import { useProdutsContext } from "../../contexts/ProdutsContext";
@@ -6,11 +6,36 @@ import { useProdutsContext } from "../../contexts/ProdutsContext";
 export const CardsCart = () => {
 
     const {produts} = useProdutsContext()
+    const [reload, setReload] = useState("https://64.media.tumblr.com/55f80a38a4ec003e4926138cf2831e20/tumblr_om086g92Eq1runoqyo7_250.gif")
+    const [text, setText] = useState(true)
+
+    let timeLoad;
+
+    useEffect(()=>{
+        if(produts.length <= 0){
+            setReload("https://64.media.tumblr.com/55f80a38a4ec003e4926138cf2831e20/tumblr_om086g92Eq1runoqyo7_250.gif")
+            timeLoad = setTimeout(()=>{
+                setReload("https://www.nicepng.com/png/full/187-1873818_png-file-svg-error-icon.png")
+                setText(false)
+            },2000)
+        }
+        setText(true)
+        return () => {
+            clearTimeout(timeLoad);
+        };
+    },[produts])
+
 
     if (produts.length <= 0) {
-        return <h4 className={styles.error}>Ops, Produto não encontrado!!</h4>;
+        clearTimeout(timeLoad)
+        return (
+            <div className={styles.error}>
+                    <img src={reload} alt="" />
+                    {!text ? <h2>Ops!,  Produto não encontrado...</h2> : ""}
+            </div>
+        );
     }
-   
+
     return (
         <>
             { produts.map((produto)=>(

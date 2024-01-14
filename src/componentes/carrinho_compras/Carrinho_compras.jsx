@@ -71,12 +71,12 @@ export const Carrinho_compras = () => {
     const mensagem = produtoFiltrado
       .map(
         (produto) => {
-          const mensagem = `${headerText}\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\nDescrição: *${produto.descricao}*\nQuantidade: *${produto.contador}*\nPreço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n_____________________________________\n`;
+          const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\nDescrição: *${produto.descricao}*\nQuantidade: *${produto.contador}*\nPreço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n_____________________________________\n`;
           return mensagem 
          
         }).join('\n\n')
 
-        const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
+        const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
         window.location.href = linkWhatsApp;
   };
      

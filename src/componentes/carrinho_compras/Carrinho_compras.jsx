@@ -20,7 +20,7 @@ export const Carrinho_compras = () => {
     const mensagem = produtoFiltrado
       .map(
         (produto) => {
-          const mensagem = `*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n Quantidade: *${produto.contador}*\n  Preço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n _____________________________________\n`;
+          const mensagem = `*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\nDescrição: *${produto.descricao}*\nQuantidade: *${produto.contador}*\nPreço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n_____________________________________\n`;
           return mensagem 
          
         }).join('\n\n')

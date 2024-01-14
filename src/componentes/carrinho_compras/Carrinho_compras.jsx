@@ -5,7 +5,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Carrinho_compras = () => {
     
-    const {cart,} = useAuthContext()
+    const {cart, User} = useAuthContext()
 
    
     const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
@@ -19,6 +19,7 @@ export const Carrinho_compras = () => {
 
 
     const [getLocalizacao, setGetLocalizacao] = useState()
+  
 
     if ("geolocation" in navigator) {
       navigator.permissions.query({ name: "geolocation" }).then((result) => {
@@ -28,7 +29,7 @@ export const Carrinho_compras = () => {
               const latitude = position.coords.latitude;
               const longitude = position.coords.longitude;
     
-              const localiza = `Minha localização é: https://www.google.com/maps/place/${latitude},${longitude}`;
+              const localiza = `https://www.google.com/maps/place/${latitude},${longitude}`;
               setGetLocalizacao(localiza)
             },
             (error) => {
@@ -43,25 +44,40 @@ export const Carrinho_compras = () => {
       console.error("A API Geolocation não é suportada neste navegador.");
     }
 
+ 
 
 
-  
 
-
-   
     
   const hendlePedido = () => {
-    console.log(getLocalizacao)
+
+    const dataHoraAtual = new Date();
+
+      const ano = dataHoraAtual.getFullYear();
+      const mes = ('0' + (dataHoraAtual.getMonth() + 1)).slice(-2); // Os meses são zero-indexed, então adicionamos 1 e garantimos dois dígitos
+      const dia = ('0' + dataHoraAtual.getDate()).slice(-2);
+      const horas = ('0' + dataHoraAtual.getHours()).slice(-2);
+      const minutos = ('0' + dataHoraAtual.getMinutes()).slice(-2);
+      const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
+
+      const dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}:${segundos}`;
+
+      const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
+
+      const headerText = `🥂_____________*KBANA DRINKs*____________🥂\n\n*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\nNome: *${getInfoUser}*\nLocalização: ${getLocalizacao}\n\nPedido: *${dataHoraFormatada}*\n`
+      
+     
+   
     const mensagem = produtoFiltrado
       .map(
         (produto) => {
-          const mensagem = `*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\nDescrição: *${produto.descricao}*\nQuantidade: *${produto.contador}*\nPreço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n_____________________________________\n`;
+          const mensagem = `${headerText}\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\nDescrição: *${produto.descricao}*\nQuantidade: *${produto.contador}*\nPreço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n_____________________________________\n`;
           return mensagem 
          
         }).join('\n\n')
 
-    const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n🗺 ${getLocalizacao}`)}`;
-    window.location.href = linkWhatsApp;
+        const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
+        window.location.href = linkWhatsApp;
   };
      
 

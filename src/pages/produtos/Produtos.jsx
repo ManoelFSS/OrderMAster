@@ -28,6 +28,9 @@ export const Produtos = () =>{
 
   // função para pegar o produto especifico no localstorage e preencher os states, assim preenchendo os campos dos inputs  = [modal ] com as informaçoes do produto!
   const editarProduto = () => {
+
+
+
     const ItemForm = JSON.parse(localStorage.getItem("db_item"))
   
     if (ItemForm && ItemForm.length > 0) {

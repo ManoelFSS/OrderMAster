@@ -16,6 +16,22 @@ export const Carrinho_compras = () => {
     }, 0);
    
     
+  const hendlePedido = () => {
+    const mensagem = produtoFiltrado
+      .map(
+        (produto) => {
+          const mensagem = `${produto.nome} - Valor: ${Number(produto.preco).toFixed(2)} R$ unit\n Quantidade: ${produto.contador}\n  Preço Total: ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n _________________________`;
+          return mensagem 
+         
+        }).join('\n\n')
+
+    const mensagemEncoded = encodeURIComponent(mensagem + `💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠`);
+    const linkWhatsApp = `whatsapp://send?text=${mensagemEncoded}`;
+    window.location.href = linkWhatsApp;
+  };
+     
+
+    
 
     localStorage.setItem("carrinho", JSON.stringify(produtoFiltrado))
     
@@ -52,7 +68,9 @@ export const Carrinho_compras = () => {
         </div>
         <div className={styles.footer_carrinho}>
           <div>
-            <button>Fazer Pedido</button>
+            <button
+              onClick={()=> hendlePedido()}
+            >Fazer Pedido</button>
           </div>
           <div className={styles.area_valorTotal}>
             <h3>Valor Total:</h3>

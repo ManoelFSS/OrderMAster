@@ -10,6 +10,9 @@ function App() {
 
   const {auths} = useAuthContext()
 
+
+  
+
   return (
     <>
       { auths === true || auths === false ? (

@@ -64,7 +64,7 @@ export const Carrinho_compras = () => {
 
       const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
 
-      const headerText = `🥂______*KBANA DRINKs*______🥂\n\n*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\nNome: *${getInfoUser}*\nLocalização: ${getLocalizacao}\n\nPedido: *${dataHoraFormatada}*\n`
+      const headerText = `*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\n🥂________*KBANA DRINKs*_________🥂\n\nNome: *${getInfoUser}*\nLocalização: ${getLocalizacao}\n\nPedido: *${dataHoraFormatada}*\n`
       
      
    

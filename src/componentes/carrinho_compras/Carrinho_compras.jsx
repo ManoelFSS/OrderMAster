@@ -21,18 +21,15 @@ export const Carrinho_compras = () => {
     const [getLocalizacao, setGetLocalizacao] = useState()
 
     if ("geolocation" in navigator) {
-      // Solicita permissão para acessar a localização
       navigator.permissions.query({ name: "geolocation" }).then((result) => {
-        if (result.state === "granted") {
-          // Se a permissão foi concedida, obtém a localização
+        if (result.state === "granted" || result.state === "prompt") {
           navigator.geolocation.getCurrentPosition(
             (position) => {
               const latitude = position.coords.latitude;
               const longitude = position.coords.longitude;
     
-              // Cria a mensagem com o link para a localização
-              const Localizacao = `Minha localização é: https://www.google.com/maps/place/${latitude},${longitude}`;
-              setGetLocalizacao(Localizacao)
+              const localiza = `Minha localização é: https://www.google.com/maps/place/${latitude},${longitude}`;
+              setGetLocalizacao(localiza)
             },
             (error) => {
               console.error("Erro ao obter a localização:", error);
@@ -45,7 +42,6 @@ export const Carrinho_compras = () => {
     } else {
       console.error("A API Geolocation não é suportada neste navegador.");
     }
-
 
 
 
@@ -64,7 +60,7 @@ export const Carrinho_compras = () => {
          
         }).join('\n\n')
 
-    const linkWhatsApp = `https://api.whatsapp.com/send?phone=+5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n🗺 ${getLocalizacao}`)}`;
+    const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n🗺 ${getLocalizacao}`)}`;
     window.location.href = linkWhatsApp;
   };
      

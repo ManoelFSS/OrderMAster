@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./Carrinho.module.css"
 import { Contador } from "../contador/Contador";
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -6,6 +6,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 export const Carrinho_compras = () => {
     
     const {cart,} = useAuthContext()
+
    
     const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
     const produtoFiltrado = getLocalstorageProduts ? getLocalstorageProduts.filter((e)=> e.contador > 0 ) : ""
@@ -14,9 +15,47 @@ export const Carrinho_compras = () => {
       const valorProduto = parseFloat(produto.preco * produto.contador)
       return total + valorProduto;
     }, 0);
+
+
+
+    const [getLocalizacao, setGetLocalizacao] = useState()
+
+    if ("geolocation" in navigator) {
+      // Solicita permissão para acessar a localização
+      navigator.permissions.query({ name: "geolocation" }).then((result) => {
+        if (result.state === "granted") {
+          // Se a permissão foi concedida, obtém a localização
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const latitude = position.coords.latitude;
+              const longitude = position.coords.longitude;
+    
+              // Cria a mensagem com o link para a localização
+              const Localizacao = `Minha localização é: https://www.google.com/maps/place/${latitude},${longitude}`;
+              setGetLocalizacao(Localizacao)
+            },
+            (error) => {
+              console.error("Erro ao obter a localização:", error);
+            }
+          );
+        } else {
+          console.error("Permissão de localização não concedida pelo usuário.");
+        }
+      });
+    } else {
+      console.error("A API Geolocation não é suportada neste navegador.");
+    }
+
+
+
+
+  
+
+
    
     
   const hendlePedido = () => {
+    console.log(getLocalizacao)
     const mensagem = produtoFiltrado
       .map(
         (produto) => {
@@ -25,8 +64,7 @@ export const Carrinho_compras = () => {
          
         }).join('\n\n')
 
-    // const mensagemEncoded = encodeURIComponent(mensagem + `💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠`);
-    const linkWhatsApp = `https://api.whatsapp.com/send?phone=+5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠`)}`;
+    const linkWhatsApp = `https://api.whatsapp.com/send?phone=+5574935050160&text=${encodeURIComponent(mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n🗺 ${getLocalizacao}`)}`;
     window.location.href = linkWhatsApp;
   };
      

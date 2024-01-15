@@ -155,6 +155,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
          localStorage.clear()
          setAuth(null)
          setProduts()
+         getUsers()
       // window.location.reload()
     }
 

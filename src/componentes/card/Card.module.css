@@ -8,12 +8,12 @@
     padding: 10px;
     border-radius: 10px;
     transform: scale(0.9);
-    box-shadow: 5px 9px 20px #00000080;
+    box-shadow: 5px 9px 20px #79787880;
     transition: all 0.3s;
 }
-.card:hover {
+/* .card:hover {
     transform: scale(1);
-}
+} */
 
 .area_img {
     width: 100%;
@@ -21,11 +21,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 50%;
 }
 
 .card img {
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     object-fit: cover;
     padding: 6px;
     border-radius: 50%;
@@ -33,16 +34,15 @@
 
 .card h2 {
     text-align: center;
-    background-color: chocolate;
-    padding: 3px;
+    background-color: rgb(0, 0, 0);
     width: 295px;
     color: #fff;
     box-shadow: 1px 3px 6px #000;
     text-transform: capitalize;
-    border-radius: 6px;
     font-size: 20px;
     padding: 4px 0px;
     text-transform: uppercase;
+    margin-bottom: 5px;
 }
 
 .area_text {
@@ -56,7 +56,7 @@
    color: #000000;
    width: 120px;
    padding: 6px 10px;
-   box-shadow: inset 1px 3px 6px #000000;
+   box-shadow: inset 1px 3px 6px #999999b7;
    font-weight:bolder;
 }
 
@@ -99,7 +99,7 @@
     height: 22px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    box-shadow: inset 1px 3px 10px #000000;
+    box-shadow: inset 1px 3px 10px #8d8d8db4;
 }
 
 .circo_toogle {
@@ -110,22 +110,20 @@
     top: -2px;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 1px 2px 6px #000, inset 2px 3px 10px 1px #fff;
+    box-shadow: 1px 2px 6px #919090c7, inset 2px 3px 10px 1px #fff;
 }
 
-.area_descricao {
-    background-color: rgb(255, 255, 255);
-    max-height: 159px;
-    overflow: auto;
-    border-radius: 10px;
-}
-
-.area_descricao p {
-    padding: 10px 8px;
-    width: 140px;
-    max-height: 160px;
-    min-height: 160px;
-    box-shadow: inset 1px 3px 10px #000000;
+.area_descricao textarea {
+    padding: 10px ;
+    max-width: 140px;
+    box-shadow: inset 1px 3px 10px #9b9b9bb9;
+    border-radius: 8px;
+    max-height: 158px;
+    min-height: 158px;
+    font-size: 15px;
+    font-weight: 800;
+    border: none;
+     
 }
 
 .area_descricao::-webkit-scrollbar {

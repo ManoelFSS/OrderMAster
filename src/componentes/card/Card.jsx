@@ -48,9 +48,9 @@ export const Card = () => {
                                 <div>
                                     <h4>Descrição</h4>
                                     <div className={styles.area_descricao}>
-                                        <p>
+                                        <textarea>
                                             {produto.descricao}
-                                        </p> 
+                                        </textarea> 
                                     </div>
                                 </div>
                             </div>

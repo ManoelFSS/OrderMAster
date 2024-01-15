@@ -57,6 +57,7 @@ export const ProdutsProvider = ({ children }) => {
         editaritem (editarItem,image, nome, preco, descricao, estoque, categoria)
         setEditarItem("")
         setReload_Localstorage()
+        localStorage.setItem("produtos", JSON.stringify(null))
         getProduts()
       }else{
         

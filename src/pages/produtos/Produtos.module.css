@@ -95,7 +95,7 @@
    align-items: center;
    justify-content: center;
    background-color: rgb(255, 255, 255) ;
-   gap: 12px;
+   gap: 10px;
    overflow: auto;
    box-shadow: inset 0px 3px 10px #a1a1a1;
    margin-bottom: 10px;

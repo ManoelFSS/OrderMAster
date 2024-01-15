@@ -1,5 +1,5 @@
 .card {
-    width: 330px;
+    width: 320px;
     height: 200px;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
@@ -8,11 +8,12 @@
     transform: scale(0.9);
 }
 
-@media (max-width:460px){
+@media (min-width:374px){
     .card {
-        min-width: 320px;
+        min-width: 350px;
     }
 }
+
 
 
 .error {
@@ -51,13 +52,11 @@
 .card section:nth-child(2) {
     display: flex;
     flex-direction: column;
-    padding: 5px;
     justify-content: center;
-    
 }
 
 .card section:nth-child(2) h3 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bolder;
     border-bottom:  solid 3px tomato;
     text-transform: capitalize;
@@ -158,10 +157,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;  
-    padding-left: 20px;
     position: absolute;
     right: 15px;
     top: 50px;
+    
 }
 .area_disponives h5 {
     font-size: 16px;

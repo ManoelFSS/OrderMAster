@@ -10,7 +10,7 @@ const provider = new GoogleAuthProvider();
 
 export const AuthProvider = ({ children }) => { // exportando a funçao que farar o provider , passando como paramentro children
  
-  const {setReload_Localstorage} = useProdutsContext()
+  const { getProduts, setProduts} = useProdutsContext()
 
   const db_app = getFirestore(app)
   const userCollectionRef = collection(db_app, "Users")
@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
             const credential = GoogleAuthProvider.credentialFromError(error);
         });
     }else{
+      getProduts()
       console.log(User)
       signInWithPopup(auth, provider)
       .then((result) => {
@@ -114,8 +115,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
 
 
     useEffect(()=>{
-      getUsers()
-       console.log(User)
+       getUsers()
     },[])
 
 
@@ -139,21 +139,23 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
       if(auths === true|| auths === false){
          clearTimeout(time)
          time = setTimeout(()=>{
-            const db_setstorage = localStorage.setItem("User", JSON.stringify(null))
-            setAuth(db_setstorage)
-            
+           localStorage.clear()
+           setAuth(null)
          },(60 * 1000) * 10)
       }
 
     }
 
     const hendleLogin = () => {
-      setReload_Localstorage()
-      console.log("fechar")
-      clearTimeout(time)
-      const db_setstorage = localStorage.setItem("User", JSON.stringify(null))
-      setAuth(db_setstorage)
-      window.location.reload()
+      // setReload_Localstorage()
+      // console.log("fechar")
+      // clearTimeout(time)
+      // const db_setstorage = localStorage.setItem("User", JSON.stringify(null))
+      // setAuth(db_setstorage)
+         localStorage.clear()
+         setAuth(null)
+         setProduts()
+      // window.location.reload()
     }
 
     const hendleToogle = (toogle) => {

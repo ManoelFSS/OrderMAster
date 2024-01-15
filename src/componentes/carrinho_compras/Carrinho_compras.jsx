@@ -6,6 +6,31 @@ import { useAuthContext } from "../../contexts/AuthContext";
 export const Carrinho_compras = () => {
     
     const {cart, User} = useAuthContext()
+    const [latitude, setLatitude] = useState()
+    const [longitude, setLongitude] = useState()
+    const [InformacoesLocalizacao ,setInformacoesLocalizacao] = useState()
+
+   const getEndereco = () => {
+    
+      const obterInformacoesLocalizacao = async () => {
+        try {
+          const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+          const resposta = await fetch(url);
+          
+          if (resposta.ok) {
+            const dados = await resposta.json();
+            setInformacoesLocalizacao(dados);
+            console.log(dados)
+          } else {
+            console.error('Erro ao obter informações de localização');
+          }
+        } catch (erro) {
+          console.error('Erro na solicitação:', erro);
+        }
+      };
+  
+      obterInformacoesLocalizacao();
+    }
 
    
     const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
@@ -28,9 +53,11 @@ export const Carrinho_compras = () => {
             (position) => {
               const latitude = position.coords.latitude;
               const longitude = position.coords.longitude;
-    
+              setLatitude(latitude)
+              setLongitude( longitude)
               const localiza = `https://www.google.com/maps/place/${latitude},${longitude}`;
               setGetLocalizacao(localiza)
+              
             },
             (error) => {
               console.error("Erro ao obter a localização:", error);
@@ -50,34 +77,36 @@ export const Carrinho_compras = () => {
 
     
   const hendlePedido = () => {
+    getEndereco()
+    console.log(latitude)
+    console.log(longitude)
+    // const dataHoraAtual = new Date();
 
-    const dataHoraAtual = new Date();
+    // const ano = dataHoraAtual.getFullYear();
+    // const mes = ('0' + (dataHoraAtual.getMonth() + 1)).slice(-2); // Os meses são zero-indexed, então adicionamos 1 e garantimos dois dígitos
+    // const dia = ('0' + dataHoraAtual.getDate()).slice(-2);
+    // const horas = ('0' + dataHoraAtual.getHours()).slice(-2);
+    // const minutos = ('0' + dataHoraAtual.getMinutes()).slice(-2);
+    // const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
 
-      const ano = dataHoraAtual.getFullYear();
-      const mes = ('0' + (dataHoraAtual.getMonth() + 1)).slice(-2); // Os meses são zero-indexed, então adicionamos 1 e garantimos dois dígitos
-      const dia = ('0' + dataHoraAtual.getDate()).slice(-2);
-      const horas = ('0' + dataHoraAtual.getHours()).slice(-2);
-      const minutos = ('0' + dataHoraAtual.getMinutes()).slice(-2);
-      const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
+    // const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
 
-      const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
+    // const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
 
-      const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
-
-      const headerText = `*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\n🥂________*KBANA DRINKs*_________🥂\n\nNome: *${getInfoUser}*\nLocalização: ${getLocalizacao}\n\nPedido: *${dataHoraFormatada}*\n`
-      
-     
+    // const headerText = `*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
+    
+    
    
-    const mensagem = produtoFiltrado
-      .map(
-        (produto) => {
-          const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\nDescrição: *${produto.descricao}*\nQuantidade: *${produto.contador}*\nPreço Total: *${Number(produto.preco * produto.contador).toFixed(2)}* R$ ✅\n_____________________________________`;
-          return mensagem 
+    // const mensagem = produtoFiltrado
+    //   .map(
+    //     (produto) => {
+    //       const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
+    //       return mensagem 
          
-        }).join('\n\n')
+    //     }).join('\n')
 
-        const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
-        window.location.href = linkWhatsApp;
+    //     const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
+    //     window.location.href = linkWhatsApp;
   };
      
 

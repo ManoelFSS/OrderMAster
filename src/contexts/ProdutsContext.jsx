@@ -51,13 +51,13 @@ export const ProdutsProvider = ({ children }) => {
     // funçao criar/editar item no firebase
     async function criarProduto(image, nome, preco, descricao, estoque, categoria){
       setReload_Localstorage()
+      getProduts()
       event.preventDefault()
 
       if(editarItem){
         editaritem (editarItem,image, nome, preco, descricao, estoque, categoria)
         setEditarItem("")
         setReload_Localstorage()
-        localStorage.setItem("produtos", JSON.stringify(null))
         getProduts()
       }else{
         

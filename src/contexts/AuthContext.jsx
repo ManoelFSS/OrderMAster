@@ -141,7 +141,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
          time = setTimeout(()=>{
            localStorage.clear()
            setAuth(null)
-         },(60 * 1000) * 10)
+         },(60 * 1000) * 20)
       }
 
     }

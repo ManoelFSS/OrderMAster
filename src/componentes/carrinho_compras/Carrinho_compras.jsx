@@ -80,33 +80,33 @@ export const Carrinho_compras = () => {
     getEndereco()
     console.log(latitude)
     console.log(longitude)
-    // const dataHoraAtual = new Date();
+    const dataHoraAtual = new Date();
 
-    // const ano = dataHoraAtual.getFullYear();
-    // const mes = ('0' + (dataHoraAtual.getMonth() + 1)).slice(-2); // Os meses são zero-indexed, então adicionamos 1 e garantimos dois dígitos
-    // const dia = ('0' + dataHoraAtual.getDate()).slice(-2);
-    // const horas = ('0' + dataHoraAtual.getHours()).slice(-2);
-    // const minutos = ('0' + dataHoraAtual.getMinutes()).slice(-2);
-    // const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
+    const ano = dataHoraAtual.getFullYear();
+    const mes = ('0' + (dataHoraAtual.getMonth() + 1)).slice(-2); // Os meses são zero-indexed, então adicionamos 1 e garantimos dois dígitos
+    const dia = ('0' + dataHoraAtual.getDate()).slice(-2);
+    const horas = ('0' + dataHoraAtual.getHours()).slice(-2);
+    const minutos = ('0' + dataHoraAtual.getMinutes()).slice(-2);
+    const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
 
-    // const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
+    const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
 
-    // const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
+    const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
 
-    // const headerText = `*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
+    const headerText = `*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
     
     
    
-    // const mensagem = produtoFiltrado
-    //   .map(
-    //     (produto) => {
-    //       const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
-    //       return mensagem 
+    const mensagem = produtoFiltrado
+      .map(
+        (produto) => {
+          const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
+          return mensagem 
          
-    //     }).join('\n')
+        }).join('\n')
 
-    //     const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
-    //     window.location.href = linkWhatsApp;
+        const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
+        window.location.href = linkWhatsApp;
   };
      
 

@@ -60,7 +60,7 @@ export const Carrinho_compras = () => {
       const minutos = ('0' + dataHoraAtual.getMinutes()).slice(-2);
       const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
 
-      const dataHoraFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}:${segundos}`;
+      const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
 
       const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
 

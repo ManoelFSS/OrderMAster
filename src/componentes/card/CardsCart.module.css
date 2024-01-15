@@ -5,12 +5,12 @@
     border-radius: 10px;
     position: relative;
     box-shadow: 1px 4px 20px #00000044;
-    transform: scale(0.8);
+    transform: scale(0.9);
 }
 
 @media (max-width:460px){
     .card {
-        min-width: 365px;
+        min-width: 320px;
     }
 }
 

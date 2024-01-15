@@ -1,8 +1,8 @@
 
 .carrinho_compras {
-    
+    height: calc(100vh);
     position: fixed;
-    top: 150px;
+    top:0px;
     right: 0;
     background-color: #fff;
     box-shadow: -4px 0px 10px #7e7e7e8c;
@@ -10,18 +10,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 150px;
    
 }
 
 .area_produtos {
     overflow: auto;
-    height:76vh;
 }
 
 @media (max-width:900px) {
     .area_produtos {
         overflow: auto;
-        height:73.3vh;
+     
     }
 }
    
@@ -45,11 +45,12 @@
     border-bottom: solid #7a7a7a54 2px;
     padding: 5px;
     justify-content: space-between;
+  
 }
 
 .carrinho_compras img{
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     padding-right: 6px;
 }
 
@@ -130,6 +131,8 @@
 .area_contador section div:nth-child(2) {
     background-color: #000000;
     padding: 4px 10px;
+    border-radius: 8px;
+   
 }
 
 .area_preco_total {
@@ -155,6 +158,7 @@
     align-items: center;
     gap: 20px;
     justify-content: flex-end;
+   
 }
 
 .area_valorTotal {

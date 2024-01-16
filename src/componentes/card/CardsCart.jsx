@@ -56,7 +56,7 @@ export const CardsCart = () => {
                                 <h5>Disponiveis</h5>
                                 <span
                                     style={{color: produto.estoque <= 0 ? "#000" : "chocolate"}}
-                                >{produto.status === false ? 0 : Number(produto.estoque) - Number(produto.contador)}</span>
+                                >{produto.status === false ? 0 : Number(produto.estoque)}</span>
                             </section>
                         </div>
                         <div className={styles.contador}>
@@ -64,7 +64,7 @@ export const CardsCart = () => {
                                 { (produto.status === true && produto.estoque === 0) || (produto.status === false && produto.estoque > 0) || (produto.status === false && produto.estoque === 0) ? 
 
                                     <>
-                                        <h3>Indisponivel</h3>
+                                        <h3>Produto Esgotado</h3>
                                     </> :
                                     <>
                                        <Contador index={produto.id} caunt={produto.contador} estoque={produto.estoque} /> 

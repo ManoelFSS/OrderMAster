@@ -5,19 +5,23 @@ import { useProdutsContext } from "../../contexts/ProdutsContext";
 export const Contador = (props) => {
 
     const {getProduts} = useProdutsContext()
+
     const hendleCaunt = (item, id) => {
-        console.log(item.estoque)
-        item.target.innerHTML === "+" ? props.caunt < props.estoque ? props.caunt + 1 : props.estoque : props.caunt > 0 ? props.caunt  - 1 : 0  
+        
+        //item.target.innerHTML === "+" ? props.caunt < props.estoque ? props.caunt + 1 : props.estoque : props.caunt > 0 ? props.caunt  - 1 : 0  
         const newProdutos = JSON.parse(localStorage.getItem("produtos"))
         const posicaoOriginal = newProdutos.findIndex((e) => e.id === id)
+        console.log(posicaoOriginal)
        
         if(item.target.innerHTML === "+"){
-            newProdutos[posicaoOriginal].contador =  props.caunt < props.estoque ? props.caunt + 1 : props.estoque
+            newProdutos[posicaoOriginal].contador = props.caunt + 1 
+            newProdutos[posicaoOriginal].estoque = props.estoque - 1
             localStorage.setItem("produtos", JSON.stringify(newProdutos))
             getProduts()
             console.log(newProdutos)
         }else{
-            newProdutos[posicaoOriginal].contador = props.caunt > 0 ? props.caunt - 1 : 0
+            newProdutos[posicaoOriginal].contador =  props.caunt - 1 
+            newProdutos[posicaoOriginal].estoque = props.estoque + 1 
             localStorage.setItem("produtos", JSON.stringify(newProdutos))
             getProduts()
             console.log(newProdutos)

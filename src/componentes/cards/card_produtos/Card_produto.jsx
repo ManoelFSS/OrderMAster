@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import styles from "./CardsCart.module.css"
-import { Contador } from "../contador/Contador";
-import { useProdutsContext } from "../../contexts/ProdutsContext";
+import { Contador } from "../../contador/Contador";
+import { useProdutsContext } from "../../../contexts/ProdutsContext";
 
 export const CardsCart = () => {
 
@@ -17,7 +17,7 @@ export const CardsCart = () => {
             timeLoad = setTimeout(()=>{
                 setReload("https://www.nicepng.com/png/full/187-1873818_png-file-svg-error-icon.png")
                 setText(false)
-            },2000)
+            },5000)
         }
         setText(true)
         return () => {

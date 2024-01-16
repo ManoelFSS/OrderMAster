@@ -1,6 +1,6 @@
 import React from 'react';
 import { Login } from './pages/login/Login';
-import {Painel} from "./pages/painel/Painel"
+import {Home} from "./pages/home/Home"
 import { useAuthContext } from "./contexts/AuthContext"
 
 
@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       { auths === true || auths === false ? (
-       <Painel/>
+       <Home/>
       ) : (
         <Login />
       )}

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import styles from "./Card.module.css"
-import { useProdutsContext } from "../../contexts/ProdutsContext";
+import { useProdutsContext } from "../../../contexts/ProdutsContext";
 
 export const Card = () => {
 
@@ -48,9 +48,7 @@ export const Card = () => {
                                 <div>
                                     <h4>Descrição</h4>
                                     <div className={styles.area_descricao}>
-                                        <textarea>
-                                            {produto.descricao}
-                                        </textarea> 
+                                        {produto.descricao}
                                     </div>
                                 </div>
                             </div>

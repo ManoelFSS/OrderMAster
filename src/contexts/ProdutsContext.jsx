@@ -50,15 +50,28 @@ export const ProdutsProvider = ({ children }) => {
 
     // funçao criar/editar item no firebase
     async function criarProduto(image, nome, preco, descricao, estoque, categoria){
-      setReload_Localstorage()
-      getProduts()
+      
       event.preventDefault()
 
       if(editarItem){
-        editaritem (editarItem,image, nome, preco, descricao, estoque, categoria)
+      
+        const newdoc = doc(db_app, "products",editarItem)
+
+        const atualizar = {
+          image:image,
+          nome:nome,
+          preco:preco,
+          descricao:descricao,
+          estoque:estoque,
+          categoria:categoria,
+          contador:0,
+        }
+
+        await updateDoc(newdoc,atualizar)
         setEditarItem("")
         setReload_Localstorage()
         getProduts()
+       
       }else{
         
         await addDoc(userCollectionRef, {
@@ -72,8 +85,7 @@ export const ProdutsProvider = ({ children }) => {
           contador:0,
         })
       }
-      setReload_Localstorage()
-      getProduts() 
+      
     }
 
     // deletando item no firebase
@@ -84,27 +96,7 @@ export const ProdutsProvider = ({ children }) => {
       getProduts()
     }
     
-    // editar item no firebase 
-    const  editaritem = async (id, image, nome, preco, descricao, estoque, categoria) => {
-      
-      const newdoc = doc(db_app, "products",id)
 
-      const atualizar = {
-        image:image,
-        nome:nome,
-        preco:preco,
-        descricao:descricao,
-        estoque:estoque,
-        categoria:categoria,
-        contador:0,
-      }
-
-      await updateDoc(newdoc,atualizar)
-      setReload_Localstorage()
-      getProduts()  
-    }
-
-    
     const setCautItem = async (caunt, id) => {
     
       console.log(id)
@@ -116,10 +108,8 @@ export const ProdutsProvider = ({ children }) => {
       getProduts() 
     }
 
-
     const setToogle = async (id, toogle) => {
       
-
       const newdoc = doc(db_app, "products",id)
       const atualizar = {
         status:toogle
@@ -143,7 +133,6 @@ export const ProdutsProvider = ({ children }) => {
       getProduts() 
     }
 
-
     const getIdModalItem = (id) => {
       if(modal !== ""){
         const itemFitrado = produts.filter((item)=> item.id === id)
@@ -162,8 +151,8 @@ export const ProdutsProvider = ({ children }) => {
 
     const getValues_inputs = (image, nome, preco, descricao, estoque, categoria) =>{
       criarProduto(image, nome, preco, descricao, estoque,categoria)
+   
     }
-
 
     useEffect(()=>{
         getProduts()

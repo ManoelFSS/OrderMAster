@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import styles from "./Produtos.module.css"
 import { Search } from "./Search";
-import { Card } from "../../componentes/card/Card";
-import { CardsCart } from "../../componentes/card/CardsCart";
+import { Card } from "../../componentes/cards/card_adm/Card_adm";
+import { CardsCart } from "../../componentes/cards/card_produtos/Card_produto";
 import { useProdutsContext } from "../..//contexts/ProdutsContext";
 import { useAuthContext } from "../../contexts/AuthContext";
 
@@ -28,8 +28,6 @@ export const Produtos = () =>{
 
   // função para pegar o produto especifico no localstorage e preencher os states, assim preenchendo os campos dos inputs  = [modal ] com as informaçoes do produto!
   const editarProduto = () => {
-
-
 
     const ItemForm = JSON.parse(localStorage.getItem("db_item"))
   

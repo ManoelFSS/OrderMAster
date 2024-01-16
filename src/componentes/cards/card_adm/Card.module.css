@@ -3,17 +3,14 @@
     flex-direction: column;
     align-items: center;
     width: 290px;
-    height: 420px;
+    height: 430px;
     background-color: rgb(255, 255, 255);
     padding: 10px;
     border-radius: 10px;
     transform: scale(0.9);
-    box-shadow: 5px 9px 20px #79787880;
+    box-shadow:inset 1px 3px 15px #00000080;
     transition: all 0.3s;
 }
-/* .card:hover {
-    transform: scale(1);
-} */
 
 .area_img {
     width: 100%;
@@ -25,17 +22,19 @@
 }
 
 .card img {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     padding: 6px;
     border-radius: 50%;
+    box-shadow: inset 1px 2px 10px #41414167;
+    transform: scale(0.9);
 }
 
 .card h2 {
     text-align: center;
     background-color: rgb(0, 0, 0);
-    width: 295px;
+    width: 288px;
     color: #fff;
     box-shadow: 1px 3px 6px #000;
     text-transform: capitalize;
@@ -110,12 +109,16 @@
     top: -2px;
     cursor: pointer;
     transition: all 0.3s;
-    box-shadow: 1px 2px 6px #919090c7, inset 2px 3px 10px 1px #fff;
+    box-shadow: 1px 2px 6px #504f4fc7, inset 2px 3px 10px 1px #ccc1c1;
 }
 
-.area_descricao textarea {
+.circo_toogle:hover{
+    background-color: chocolate!important;
+}
+
+.area_descricao {
     padding: 10px ;
-    max-width: 140px;
+    width: 140px;
     box-shadow: inset 1px 3px 10px #9b9b9bb9;
     border-radius: 8px;
     max-height: 158px;

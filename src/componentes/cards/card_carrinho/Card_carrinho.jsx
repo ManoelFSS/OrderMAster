@@ -118,10 +118,10 @@ export const Card_carrinho = () => {
                   </div>
                   <div className={styles.area_contador}>
                     <Contador  index={card.id} caunt={card.contador} estoque={card.estoque}/>
-                  </div>
-                  <div className={styles.area_preco_total}>
-                    <h4>Total</h4>
-                    <h5>{parseFloat(card.preco * card.contador).toFixed(2)}</h5>
+                    <div className={styles.area_preco_total}>
+                      <h4>Total</h4>
+                      <h5>{parseFloat(card.preco * card.contador).toFixed(2)}</h5>
+                    </div>
                   </div>
                 </section>
               )

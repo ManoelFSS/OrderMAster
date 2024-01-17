@@ -3,7 +3,7 @@ import styles from "./Home.module.css"
 import { Menu } from "../../componentes/menu/Menu"
 import { Header } from "../../componentes/header/Header"
 import { Rotas } from "../../Rotas"
-import { Carrinho_compras } from "../../componentes/cards/card_compras/Card_compras"
+import { Card_carrinho } from "../../componentes/cards/card_carrinho/Card_carrinho"
 
 export const Home = ()=>{
     return (
@@ -13,7 +13,7 @@ export const Home = ()=>{
                 <Header/>
                 <Rotas/>
             </section>
-            <Carrinho_compras/>
+            <Card_carrinho/>
         </section>
     )
 }

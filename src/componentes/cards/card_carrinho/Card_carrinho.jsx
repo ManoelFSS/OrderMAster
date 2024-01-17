@@ -3,8 +3,17 @@ import styles from "./Carrinho.module.css"
 import { Contador } from "../../contador/Contador";
 import { useAuthContext } from "../../../contexts/AuthContext";
 
-export const Carrinho_compras = () => {
+export const Card_carrinho = () => {
   
+  const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
+  const produtoFiltrado = getLocalstorageProduts ? getLocalstorageProduts.filter((e)=> e.contador > 0 ) : ""
+  localStorage.setItem("carrinho", JSON.stringify(produtoFiltrado))
+
+  const totalGeral = produtoFiltrado.reduce((total, produto) => {
+    const valorProduto = parseFloat(produto.preco * produto.contador)
+    return total + valorProduto;
+  }, 0);
+
   const {cart, User} = useAuthContext()
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
@@ -31,16 +40,6 @@ export const Carrinho_compras = () => {
 
     obterInformacoesLocalizacao();
   }
-
-  
-  const getLocalstorageProduts = JSON.parse(localStorage.getItem("produtos")) || []
-  const produtoFiltrado = getLocalstorageProduts ? getLocalstorageProduts.filter((e)=> e.contador > 0 ) : ""
-  localStorage.setItem("carrinho", JSON.stringify(produtoFiltrado))
-
-  const totalGeral = produtoFiltrado.reduce((total, produto) => {
-    const valorProduto = parseFloat(produto.preco * produto.contador)
-    return total + valorProduto;
-  }, 0);
     
   const [getLocalizacao, setGetLocalizacao] = useState()
 
@@ -138,9 +137,8 @@ export const Carrinho_compras = () => {
             >Pedir Delivery 🚀</button>
           </div>
           <div className={styles.area_valorTotal}>
-            <h3>Valor Total:</h3>
-            <span>{totalGeral.toFixed(2)}</span>
-            <div>💰</div>
+            <h3>Valor Total :</h3>
+            <span>{totalGeral.toFixed(2)} 💰</span>
           </div>
         </div>
       </aside>

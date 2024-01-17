@@ -14,8 +14,8 @@ export const Contador = (props) => {
         console.log(posicaoOriginal)
        
         if(item.target.innerHTML === "+"){
-            newProdutos[posicaoOriginal].contador = props.caunt + 1 
-            newProdutos[posicaoOriginal].estoque = props.estoque - 1
+            newProdutos[posicaoOriginal].contador = props.estoque > 0 ? props.caunt + 1 : props.caunt
+            newProdutos[posicaoOriginal].estoque = props.estoque > 0 ? props.estoque - 1 : props.estoque
             localStorage.setItem("produtos", JSON.stringify(newProdutos))
             getProduts()
             console.log(newProdutos)

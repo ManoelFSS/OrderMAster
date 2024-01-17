@@ -150,6 +150,10 @@
     text-align: center;
 }
 
+
+
+
+
 .area_preco_total h4 {
     border-bottom:  solid 2px tomato;
 }
@@ -175,8 +179,19 @@
     align-items: center;
     color: #000000;
     background-color: #fff;
-    padding: 10px 12px;
     border-top: solid 2px #bbbbbb;
+}
+
+@media (max-width:376px){
+    .area_valorTotal {
+        padding: 10px 26px;
+    }
+}
+
+@media (min-width:420px){
+    .area_valorTotal {
+        padding: 10px 38px;
+    }
 }
 
 .area_valorTotal h3 {

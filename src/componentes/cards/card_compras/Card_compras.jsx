@@ -129,14 +129,18 @@ export const Carrinho_compras = () => {
           )}
         </div>
         <div className={styles.footer_carrinho}>
-          <div>
+          <div className={styles.area_btn_cart}>
             <button
               onClick={()=> hendlePedido()}
-            >Fazer Pedido na Mesa</button>
+            >Pedir no Local</button>
+            <button
+              onClick={()=> hendlePedido()}
+            >Pedir Delivery 🚀</button>
           </div>
           <div className={styles.area_valorTotal}>
             <h3>Valor Total:</h3>
             <span>{totalGeral.toFixed(2)}</span>
+            <div>💰</div>
           </div>
         </div>
       </aside>

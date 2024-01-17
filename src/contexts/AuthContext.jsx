@@ -125,7 +125,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     let time;
 
     window.addEventListener("mousemove", ()=>{
-      
+      console.log("mouse")
       const db_storage = JSON.parse(localStorage.getItem("User"))
       setAuth(db_storage)
       if(db_storage === true || db_storage === false){

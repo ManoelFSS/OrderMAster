@@ -11,7 +11,7 @@ export const Header = () => {
 
     return (
         <header>
-            <section className={styles.area_toogle}>
+            <section className={styles.conteiner_header}>
                 <div 
                     className={styles.toogle}
                     onClick={() => hendleToogle( toogle === "-310px" ? "0px" : "-310px")}

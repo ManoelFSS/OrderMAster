@@ -3,7 +3,7 @@ header {
   padding-bottom: 60px;
   background-color: #000;
 }
-.area_toogle {
+.conteiner_header {
   display: flex;
   width: 100%;
   justify-content: flex-end;
@@ -23,7 +23,7 @@ header h1 {
   font-size: 30px;
 }
 
-.area_toogle p {
+.conteiner_header p {
   position: relative;
   z-index: 111;
   border: solid 2px tomato;

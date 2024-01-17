@@ -1,7 +1,8 @@
 header {
   position: relative;
   padding-bottom: 60px;
-  background-color: #000;
+  background-color: #000000;
+  z-index: 113;
 }
 .conteiner_header {
   display: flex;
@@ -10,11 +11,12 @@ header {
   align-items: center;
   padding: 10px 0px;
   padding-right: 40px;
-  background-color: #000;
+  background-color: #000000;
   gap: 80px;
   position: fixed;
-  z-index: 111;
+  z-index: 113;
   top: 0;
+  
 }
 
 header h1 {
@@ -43,7 +45,8 @@ header h1 {
   width: 35px;
   border-radius: 10px;
   position: absolute;
-  left: 20px;
+  left: 10px;
+  top: 12px;
   transition: all 0.4s;
   z-index: 100;
   cursor: pointer;

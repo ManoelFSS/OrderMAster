@@ -107,16 +107,16 @@
     background-color: #000000;
     color: #fff;
     height: 60px;
-    width: 280px;
+    width: 300px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     border-radius: 35px;
-    font-size: 18px;
+    font-size: 16px;
     cursor: pointer;
     font-weight: bolder;
     position: relative;
-    padding-right: 22px;
+    padding-left: 25px;
     border: solid 2px #fff;
 }
 

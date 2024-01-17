@@ -4,7 +4,7 @@ import { useAuthContext } from "../../contexts/AuthContext"
 
 export const Menu = () =>{
 
-    const {toogle} = useAuthContext()
+    const {toogle, hendleLogin} = useAuthContext()
 
     return (
         <nav 
@@ -12,6 +12,8 @@ export const Menu = () =>{
             style={{left:toogle}}
         >
             <div className={styles.logo}>
+                <span></span>
+                <p onClick={()=> hendleLogin()}>Sair</p>
                 <img src={JSON.parse(localStorage.getItem("photo"))} alt="" />
                 <h2>{JSON.parse(localStorage.getItem("UserName")).split(" ")[0]}</h2>
             </div>

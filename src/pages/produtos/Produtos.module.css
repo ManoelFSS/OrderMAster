@@ -146,6 +146,7 @@
     height: calc(100vh - 7vh );
     overflow: auto;
     padding-top: 130px;
+    padding-bottom: 40px;
     background-color: rgb(219, 219, 219);
 
 }

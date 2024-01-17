@@ -165,7 +165,6 @@
 }
 .area_btn_cart {
     display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 

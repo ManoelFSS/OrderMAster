@@ -76,6 +76,7 @@
     font-size: 16px;
     border-bottom: solid 2px tomato;
     text-transform: capitalize;
+    padding-bottom: 4px;
 }
 
 .contador .are_infor h5 {

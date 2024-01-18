@@ -39,7 +39,7 @@ export const Login = () =>{
             </div> */}
             <img src="https://img.restaurantguru.com/r5cf-Kabana-bar-e-petiscaria-logo.jpg" alt="" />
             <h4 
-                onClickCapture={(e)=> {signInGoogle(), e.target.style.opacity = "0"}}
+                onClickCapture={(e)=> {signInGoogle(), e.target.style.visibility = "hidden" }}
                 className={Styles.google}
             >Fazer Login com Google</h4>
         </section>

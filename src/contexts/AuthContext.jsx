@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
             localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
             localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
             checkedUser = false
-            // signInGoogle()
+         
           }
           
           getUsers()
@@ -143,17 +143,13 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     }
 
     const hendleLogin = () => {
-      // setReload_Localstorage()
-      // console.log("fechar")
-      // clearTimeout(time)
-      // const db_setstorage = localStorage.setItem("User", JSON.stringify(null))
-      // setAuth(db_setstorage)
+     
          localStorage.clear()
          clearTimeout(time)
          setAuth(null)
          setProduts()
          getUsers()
-      // window.location.reload()
+     
     }
 
     const hendleToogle = (toogle) => {

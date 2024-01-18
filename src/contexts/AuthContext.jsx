@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     getUsers()
     const auth = getAuth(app);
 
-    if(User.length <= 0){
+    if(User === null){
         
       auth.signInWithRedirect(provider)
         .then((result) => {
@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
             const email = error.customData.email;
             const credential = GoogleAuthProvider.credentialFromError(error);
         });
+
     }else{
       getProduts()
       console.log(User)
@@ -101,10 +102,10 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
       email:user.email,
       photo:user.photoURL,
       token:user.uid,
-      adm:User.length <= 0 ? true : false,
+      adm: User === null ? true : false,
     })
-    setAuth(User.length <= 0 ? true : false)
-    localStorage.setItem("User", JSON.stringify(User.length <= 0 ? true : false))
+    setAuth(User === null ? true : false)
+    localStorage.setItem("User", JSON.stringify(User === null ? true : false))
     getUsers()
   }
 

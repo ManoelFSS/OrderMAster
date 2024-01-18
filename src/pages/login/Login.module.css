@@ -121,8 +121,6 @@
     padding-left: 25px;
     border: solid 2px #fff;
     opacity: 0;
-    user-select: none;
-    outline: none;
     animation: animaButton 1s  linear forwards 2s;
 }
 

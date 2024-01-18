@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
 
  
   const signInGoogle = () => {
-    
+    getUsers()
     const auth = getAuth(app);
 
     if(User.length <= 0){
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
 
           let checkedUser = false
           if(User){
-            setAuth('')
+            setAuth(null)
             getUsers()
             User.map((e)=> {
               if(e.email === user.providerData[0].email && e.token === user.providerData[0].uid){
@@ -94,11 +94,6 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     }
   }
   
-  
-  
-
- 
-
   async function createUser(user){
     
     await addDoc(userCollectionRef, {
@@ -153,6 +148,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
       // const db_setstorage = localStorage.setItem("User", JSON.stringify(null))
       // setAuth(db_setstorage)
          localStorage.clear()
+         clearTimeout(time)
          setAuth(null)
          setProduts()
          getUsers()

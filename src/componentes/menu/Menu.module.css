@@ -67,14 +67,31 @@
     font-size: 25px;
     font-weight: bolder;
     margin-top: 5px;
+  
 }
 
-.logo img{
+.logo .img{
     width: 140px;
     height: 140px;
     border-radius: 50%;
     border: solid 3px tomato;
     box-shadow: 0px 2px 6px rgb(167, 76, 11);
+    cursor: pointer;
+}
+.logo .img::after{
+    content: "";
+    position: absolute;
+    transition: all 0.2s;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    border-radius: 50%;
+    background: url("https://cdn-icons-png.flaticon.com/128/5857/5857203.png") no-repeat center / cover;
+}
+
+.logo .img:hover::after {
+   opacity: 1;
 }
 
 ul {

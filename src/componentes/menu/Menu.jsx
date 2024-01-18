@@ -13,8 +13,14 @@ export const Menu = () =>{
         >
             <div className={styles.logo}>
                 <span></span>
+                <input type="file" id="wpload" style={{display:"none"}} />
                 <p onClick={()=> hendleLogin()}>Sair</p>
-                <img src={JSON.parse(localStorage.getItem("photo"))} alt="" />
+                <label 
+                    htmlFor="wpload" 
+                    style={{background: `url(${JSON.parse(localStorage.getItem("photo"))}) no-repeat center / cover`}}
+                    className={styles.img}
+                ></label>
+                {/* <img src={JSON.parse(localStorage.getItem("photo"))} alt="" /> */}
                 <h2>{JSON.parse(localStorage.getItem("UserName")).split(" ")[0]}</h2>
             </div>
             <ul>

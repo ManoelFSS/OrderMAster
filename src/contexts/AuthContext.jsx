@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
             localStorage.setItem("photo", JSON.stringify(user.providerData[0].photoURL))
             localStorage.setItem("UserName", JSON.stringify(user.providerData[0].displayName))
             checkedUser = false
-            signInGoogle()
+            // signInGoogle()
           }
           
           getUsers()

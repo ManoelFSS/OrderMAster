@@ -40,7 +40,7 @@ header h1 {
  }
 
  .toogle {
-  background-color: tomato;
+
   height: 35px;
   width: 35px;
   border-radius: 10px;
@@ -50,7 +50,7 @@ header h1 {
   transition: all 0.4s;
   z-index: 100;
   cursor: pointer;
-  border: solid 2px tomato;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6N2Kga6CZUh1JQ4HjC0xLv0Qd1aHZ5zeJrw&usqp=CAU") no-repeat center / cover;
  }
 
  .carrinho {

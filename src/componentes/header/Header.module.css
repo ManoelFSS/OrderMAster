@@ -40,17 +40,15 @@ header h1 {
  }
 
  .toogle {
-
   height: 35px;
   width: 35px;
   border-radius: 10px;
   position: absolute;
   left: 10px;
   top: 12px;
-  transition: all 0.4s;
+  transition: all 0.3s ease;
   z-index: 100;
   cursor: pointer;
-  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6N2Kga6CZUh1JQ4HjC0xLv0Qd1aHZ5zeJrw&usqp=CAU") no-repeat center / cover;
  }
 
  .carrinho {

@@ -155,6 +155,7 @@ export const AuthProvider = ({ children }) => { // exportando a funçao que fara
     const hendleToogle = (toogle) => {
       setToogle(toogle)
     }
+    
 
     const [cart, setCart] = useState("-430px")
     const hendleCart = (cart_toogle) => {

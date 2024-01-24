@@ -60,7 +60,7 @@ export const ProdutsProvider = ({ children }) => {
         const atualizar = {
           image:image,
           nome:nome,
-          preco:preco,
+          preco:Number(preco),
           descricao:descricao,
           estoque:estoque,
           categoria:categoria,

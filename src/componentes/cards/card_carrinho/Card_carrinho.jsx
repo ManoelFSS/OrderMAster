@@ -83,7 +83,7 @@ export const Card_carrinho = () => {
 
     const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
 
-    const headerText = `*Cardapio:* https://main--classy-conkies-01e448.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
+    const headerText = `*Cardapio:*https://order-master.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
     
     const mensagem = produtoFiltrado.map((produto) => {
           const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;

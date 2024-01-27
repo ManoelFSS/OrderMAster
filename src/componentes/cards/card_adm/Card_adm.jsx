@@ -33,7 +33,7 @@ export const Card = () => {
                             <div>
                                 <div>
                                     <h4>Preço</h4>
-                                    <p>{parseFloat(produto.preco).toFixed(2)}</p>
+                                    <p>{produto.preco.toFixed(2)}</p>
                                 </div>
                                 <div>
                                     <h4>Estoque</h4>

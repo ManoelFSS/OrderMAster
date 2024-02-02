@@ -17,20 +17,39 @@
     box-shadow: inset 2px 5px 10px #000000;
     border: none;
     transition: all 0.3s;
-    animation: animaLogo 2s  ease infinite  ;
+    transform: scale(0.8);
+ 
+    animation: animaLogo 2s  ease infinite, animaLogocor 0.4s ease infinite  ;
 }
 
 @keyframes animaLogo {
     0%, 100%{
+        transform: scale(0.8);
+    }
+   
+    50%{
+        transform: scale(0.9);
+    }
+    
+}
+@keyframes animaLogocor {
+    0%, 100%{
         background-color: tomato;
-        transform: scale(1.1);
+    }
+
+    25%{
+        background-color:  tomato;
     }
    
     50%{
         background-color:  rgba(115, 255, 0, 0.719);
-        transform: scale(1);
     }
+    70%{
+        background-color:  rgba(17, 0, 255, 0.719);
+    }
+
 }
+
 
 .area_login {
   

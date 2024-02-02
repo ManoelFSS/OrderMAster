@@ -68,6 +68,13 @@ export const Produtos = () =>{
     setestoque("")
     setcategoria("")
   }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth' // faz a rolagem ser suave
+    });
+  }
+
 
     return (
         <section className={styles.produts}>
@@ -170,7 +177,7 @@ export const Produtos = () =>{
           {
             filterCarrinho.length > 0 ? (
               <section className={styles.footer_produtos}>
-                <button onClick={()=> hendleCart("0px")}>Ver Carrinho</button>
+                <button onClick={()=> {hendleCart("0px"), scrollToTop()}}>Ver Carrinho</button>
                 <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTNwsxcXZZqO_uqaVHDJYU_XHM2VnMyBW2loXFd9ItunXIGvqaV" alt="" />
               </section>
             ):(

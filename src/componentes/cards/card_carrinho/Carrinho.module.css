@@ -1,6 +1,6 @@
 
 .carrinho_compras {
-    height: calc(100vh);
+    height: 100svh;
     position: fixed;
     top:0;
     right: 0;

@@ -2,7 +2,6 @@
 .carrinho_compras {
     height: 100svh;
     position: fixed;
-    top: 0;
     bottom: 0;
     right: 0;
     background-color: #fff;
@@ -18,6 +17,7 @@
 
 .area_produtos {
     overflow: auto;
+    height: 100%;
 }
 
 

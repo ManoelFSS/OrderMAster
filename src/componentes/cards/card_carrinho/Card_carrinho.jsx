@@ -158,7 +158,7 @@ export const Card_carrinho = () => {
           </div>
         </div>
         <Form_delivery 
-          close_form={hendle_close_form} 
+          close_form={hendle_close_form}
           clear_form={form_close}  
           action_form={hendlePedido} 
           campo_input={validate_campo_form}

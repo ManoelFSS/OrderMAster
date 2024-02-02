@@ -16,7 +16,7 @@
 }
 
 .area_produtos {
-    height: calc(100vh);
+    height: calc(100svh);
     overflow: auto;
 }
 

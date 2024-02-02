@@ -14,7 +14,7 @@ export const Card_carrinho = () => {
     return total + valorProduto;
   }, 0);
 
-  const {cart, User} = useAuthContext()
+  const {cart, hendleCart, User} = useAuthContext()
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
   const [InformacoesLocalizacao ,setInformacoesLocalizacao] = useState()
@@ -137,6 +137,9 @@ export const Card_carrinho = () => {
             >Pedir Delivery 🚀</button>
           </div>
           <div className={styles.area_valorTotal}>
+            <button
+             onClick={()=> hendleCart("-420px")}
+            > Ver mais Produtos</button>
             <h3>Valor Total :</h3>
             <span>{totalGeral.toFixed(2)} 💰</span>
           </div>

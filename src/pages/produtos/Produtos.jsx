@@ -8,7 +8,9 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 export const Produtos = () =>{
 
-  const {auths} = useAuthContext()
+  const {auths,  hendleCart} = useAuthContext()
+  const get_produtos = JSON.parse(localStorage.getItem("produtos"))
+  const  filterCarrinho = get_produtos ?  get_produtos.filter((e)=> e.contador > 0 ) : ""
 
   const {
       getValues_inputs,
@@ -16,7 +18,6 @@ export const Produtos = () =>{
       getValue_modal,
       editarItem,
       setEditarItem,
-      
   } = useProdutsContext()
     
   const [image, setimage] = useState("")
@@ -166,6 +167,17 @@ export const Produtos = () =>{
               >X</span>
             </div>
           </section>
+          {
+            filterCarrinho.length > 0 ? (
+              <section className={styles.footer_produtos}>
+                <button onClick={()=> hendleCart("0px")}>Ver Carrinho</button>
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTNwsxcXZZqO_uqaVHDJYU_XHM2VnMyBW2loXFd9ItunXIGvqaV" alt="" />
+              </section>
+            ):(
+              <></>
+            )
+          }
+          
         </section>
     )
 }

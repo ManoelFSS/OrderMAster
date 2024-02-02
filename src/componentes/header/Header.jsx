@@ -25,7 +25,7 @@ export const Header = () => {
                     (
                         <div 
                             className={styles.carrinho}
-                            onClick={() => hendleCart( cart === "-430px" ? "0px" : "-430px")}
+                            onClick={() => hendleCart( cart === "-420px" ? "0px" : "-420px")}
                         >
                             <span
                                 style={{color:filterCarrinho.length > 0 ? "#73ff00" : "tomato"}}

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import styles from "./Carrinho.module.css"
 import { Contador } from "../../contador/Contador";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { Form_delivery } from "../../formularios/form_cart/Form_delivery";
 
 export const Card_carrinho = () => {
   
@@ -18,9 +19,10 @@ export const Card_carrinho = () => {
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
   const [InformacoesLocalizacao ,setInformacoesLocalizacao] = useState()
+  const [form_close, setfrom_close] = useState("none")
 
   const getEndereco = () => {
-  
+
     const obterInformacoesLocalizacao = async () => {
       try {
         const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
@@ -41,35 +43,39 @@ export const Card_carrinho = () => {
     obterInformacoesLocalizacao();
   }
     
-  const [getLocalizacao, setGetLocalizacao] = useState()
-
-  if ("geolocation" in navigator) {
-    navigator.permissions.query({ name: "geolocation" }).then((result) => {
-      if (result.state === "granted" || result.state === "prompt") {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const latitude = position.coords.latitude;
-            const longitude = position.coords.longitude;
-            setLatitude(latitude)
-            setLongitude( longitude)
-            const localiza = `https://www.google.com/maps/place/${latitude},${longitude}`;
-            setGetLocalizacao(localiza)
-            
-          },
-          (error) => {
-            console.error("Erro ao obter a localização:", error);
+    const [getLocalizacao, setGetLocalizacao] = useState()
+    const getgoogle = () =>{
+      if ("geolocation" in navigator) {
+        navigator.permissions.query({ name: "geolocation" }).then((result) => {
+          if (result.state === "granted" || result.state === "prompt") {
+            navigator.geolocation.getCurrentPosition(
+              (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                setLatitude(latitude)
+                setLongitude( longitude)
+                const localiza = `https://www.google.com/maps/place/${latitude},${longitude}`;
+                setGetLocalizacao(localiza)
+                
+              },
+              (error) => {
+                console.error("Erro ao obter a localização:", error);
+              }
+            );
+          } else {
+            console.error("Permissão de localização não concedida pelo usuário.");
           }
-        );
+        });
       } else {
-        console.error("Permissão de localização não concedida pelo usuário.");
+        console.error("A API Geolocation não é suportada neste navegador.");
       }
-    });
-  } else {
-    console.error("A API Geolocation não é suportada neste navegador.");
-  }
+    }
 
   const hendlePedido = () => {
-    getEndereco()
+    getgoogle()
+    const getEndereco = JSON.parse(localStorage.getItem("endereco"))
+    const enderecoFiltrado = getEndereco.map((e)=> `*Rua*: ${e.rua}\n*Bairro*: ${e.bairro}\n*Referencia*: ${e.referencia}`)
+  
     const dataHoraAtual = new Date();
 
     const ano = dataHoraAtual.getFullYear();
@@ -82,8 +88,9 @@ export const Card_carrinho = () => {
     const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
 
     const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
+    const enderecoText = ""
 
-    const headerText = `*Cardapio:*https://order-master.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
+    const headerText = `*Cardapio:*https://order-master.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n${enderecoFiltrado}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
     
     const mensagem = produtoFiltrado.map((produto) => {
           const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
@@ -93,6 +100,12 @@ export const Card_carrinho = () => {
       const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
       window.location.href = linkWhatsApp;
   };
+
+  const hendle_close_form = () => {
+     setfrom_close(form_close === "flex" ? "none" : "flex")
+  }
+
+  const [validate_campo_form, setvalidate_campo_form ] = useState(null)
      
   
     
@@ -130,10 +143,10 @@ export const Card_carrinho = () => {
         <div className={styles.footer_carrinho}>
           <div className={styles.area_btn_cart}>
             <button
-              onClick={()=> hendlePedido()}
+              onClick={()=> {hendle_close_form(), setvalidate_campo_form(false)}}
             >Pedir no Local</button>
             <button
-              onClick={()=> hendlePedido()}
+              onClick={()=> {hendle_close_form(), setvalidate_campo_form(true)}}
             >Pedir Delivery 🚀</button>
           </div>
           <div className={styles.area_valorTotal}>
@@ -144,6 +157,12 @@ export const Card_carrinho = () => {
             <span>{totalGeral.toFixed(2)} 💰</span>
           </div>
         </div>
+        <Form_delivery 
+          close_form={hendle_close_form} 
+          clear_form={form_close}  
+          action_form={hendlePedido} 
+          campo_input={validate_campo_form}
+        />
       </aside>
     );
   };

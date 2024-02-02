@@ -2,6 +2,7 @@
 .carrinho_compras {
     height: 100svh;
     position: fixed;
+    top: 0;
     bottom: 0;
     right: 0;
     background-color: #fff;
@@ -16,17 +17,11 @@
 }
 
 .area_produtos {
-    height: calc(100svh);
+    height:100svh;
     overflow: auto;
 }
 
-@media (max-width:900px) {
-    .area_produtos {
-        overflow: auto;
-     
-    }
-}
-   
+
 .area_produtos::-webkit-scrollbar {
     width: 5px;
 }

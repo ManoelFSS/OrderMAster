@@ -74,7 +74,7 @@ export const Card_carrinho = () => {
   const hendlePedido = () => {
     getgoogle()
     const getEndereco = JSON.parse(localStorage.getItem("endereco"))
-    const enderecoFiltrado = getEndereco.map((e)=> `*Rua*: ${e.rua}\n*Bairro*: ${e.bairro}\n*Referencia*: ${e.referencia}`)
+    const enderecoFiltrado = getEndereco.map((e)=> `*Rua*: ${e.rua}\n*Bairro*: ${e.bairro}\n*Referencia*: ${e.referencia}\n*Mesa*:${e.mesa}`)
   
     const dataHoraAtual = new Date();
 

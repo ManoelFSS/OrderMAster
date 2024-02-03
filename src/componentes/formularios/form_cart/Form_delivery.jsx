@@ -107,7 +107,7 @@ export const Form_delivery = (props) => {
                
                 <div>
                     <button
-                        onClick={()=>   hendlepedido()}
+                        onClick={()=> {hendlepedido(),  props.close_form()}}
                     >Finalizar Pedido</button>
                     <span
                     onClick={()=> props.close_form()}

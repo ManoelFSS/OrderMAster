@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import styles from "./Carrinho.module.css"
 import { Contador } from "../../contador/Contador";
 import { useAuthContext } from "../../../contexts/AuthContext";
+import { useProdutsContext } from "../../../contexts/ProdutsContext";
 import { Form_delivery } from "../../formularios/form_cart/Form_delivery";
 
 export const Card_carrinho = () => {
@@ -16,6 +17,7 @@ export const Card_carrinho = () => {
   }, 0);
 
   const {cart, hendleCart, User} = useAuthContext()
+  const {setReload_Localstorage} = useProdutsContext()
   const [latitude, setLatitude] = useState()
   const [longitude, setLongitude] = useState()
   const [InformacoesLocalizacao ,setInformacoesLocalizacao] = useState()
@@ -74,6 +76,7 @@ export const Card_carrinho = () => {
     }
 
   const hendlePedido = () => {
+   
     getlocaut()
     const getEndereco = JSON.parse(localStorage.getItem("endereco"))
     const enderecoFiltrado = getEndereco.map((e)=> `*Rua*: ${e.rua}\n*Bairro*: ${e.bairro}\n*Referencia*: ${e.referencia}\n*Mesa*:${e.mesa}`)
@@ -88,7 +91,7 @@ export const Card_carrinho = () => {
     const segundos = ('0' + dataHoraAtual.getSeconds()).slice(-2);
 
     const dataHoraFormatada = `${dia}/${mes}/${ano} as ${horas}:${minutos}:${segundos}`;
-
+    
     const getInfoUser = JSON.parse(localStorage.getItem("UserName"))
     const enderecoText = ""
 
@@ -96,11 +99,14 @@ export const Card_carrinho = () => {
     
     const mensagem = produtoFiltrado.map((produto) => {
           const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
+          setReload_Localstorage()
           return mensagem 
     }).join('\n')
 
       const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
       window.location.href = linkWhatsApp;
+      
+     
   };
 
   const hendle_close_form = () => {

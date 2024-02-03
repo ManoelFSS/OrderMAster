@@ -29,8 +29,16 @@ export const Form_delivery = (props) => {
 
     const hendlepedido = () => {
         event.preventDefault()
-        hendle_campos_inpts()
-        props.action_form()
+
+        if(rua !== undefined && numero !== undefined && bairro !== undefined && referencia !== undefined){
+            hendle_campos_inpts()
+            props.action_form()
+       
+        }else if(mesa !== undefined){
+            hendle_campos_inpts()
+            props.action_form()
+        }
+        
     }
 
    
@@ -99,7 +107,7 @@ export const Form_delivery = (props) => {
                
                 <div>
                     <button
-                        onClick={()=>  hendlepedido()}
+                        onClick={()=>   hendlepedido()}
                     >Finalizar Pedido</button>
                     <span
                     onClick={()=> props.close_form()}

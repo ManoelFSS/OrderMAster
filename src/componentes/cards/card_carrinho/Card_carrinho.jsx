@@ -44,7 +44,9 @@ export const Card_carrinho = () => {
   }
     
     const [getLocalizacao, setGetLocalizacao] = useState()
-    const getgoogle = () =>{
+
+    const getlocaut = () =>{
+
       if ("geolocation" in navigator) {
         navigator.permissions.query({ name: "geolocation" }).then((result) => {
           if (result.state === "granted" || result.state === "prompt") {
@@ -72,7 +74,7 @@ export const Card_carrinho = () => {
     }
 
   const hendlePedido = () => {
-
+    getlocaut()
     const getEndereco = JSON.parse(localStorage.getItem("endereco"))
     const enderecoFiltrado = getEndereco.map((e)=> `*Rua*: ${e.rua}\n*Bairro*: ${e.bairro}\n*Referencia*: ${e.referencia}\n*Mesa*:${e.mesa}`)
   
@@ -102,6 +104,7 @@ export const Card_carrinho = () => {
   };
 
   const hendle_close_form = () => {
+    getlocaut()
      setfrom_close(form_close === "flex" ? "none" : "flex")
   }
 
@@ -157,7 +160,12 @@ export const Card_carrinho = () => {
             <span>{totalGeral.toFixed(2)} 💰</span>
           </div>
         </div>
-        <Form_delivery close_form={hendle_close_form} clear_form={form_close} action_form={hendlePedido} campo_input={validate_campo_form} />
+        <Form_delivery 
+          close_form={hendle_close_form} 
+          clear_form={form_close}  
+          action_form={hendlePedido} 
+          campo_input={validate_campo_form}
+        />
       </aside>
     );
   };

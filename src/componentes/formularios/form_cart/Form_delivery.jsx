@@ -33,10 +33,12 @@ export const Form_delivery = (props) => {
         if(rua !== undefined && numero !== undefined && bairro !== undefined && referencia !== undefined){
             hendle_campos_inpts()
             props.action_form()
+            props.close_form()
        
         }else if(mesa !== undefined){
             hendle_campos_inpts()
             props.action_form()
+            props.close_form()
         }
         
     }
@@ -107,10 +109,10 @@ export const Form_delivery = (props) => {
                
                 <div>
                     <button
-                        onClick={()=> {hendlepedido(),  props.close_form()}}
-                    >Finalizar Pedido</button>
+                        onClick={()=> hendlepedido()}
+                    > Finalizar Pedido </button>
                     <span
-                    onClick={()=> props.close_form()}
+                        onClick={()=> props.close_form()}
                     >Cancelar</span>
                 </div>
             </form>

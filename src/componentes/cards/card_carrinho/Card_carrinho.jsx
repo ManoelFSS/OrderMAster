@@ -72,7 +72,7 @@ export const Card_carrinho = () => {
     }
 
   const hendlePedido = () => {
-    getgoogle()
+
     const getEndereco = JSON.parse(localStorage.getItem("endereco"))
     const enderecoFiltrado = getEndereco.map((e)=> `*Rua*: ${e.rua}\n*Bairro*: ${e.bairro}\n*Referencia*: ${e.referencia}\n*Mesa*:${e.mesa}`)
   
@@ -157,12 +157,7 @@ export const Card_carrinho = () => {
             <span>{totalGeral.toFixed(2)} 💰</span>
           </div>
         </div>
-        <Form_delivery 
-          close_form={hendle_close_form}
-          clear_form={form_close}  
-          action_form={hendlePedido} 
-          campo_input={validate_campo_form}
-        />
+        <Form_delivery close_form={hendle_close_form} clear_form={form_close} action_form={hendlePedido} campo_input={validate_campo_form} />
       </aside>
     );
   };

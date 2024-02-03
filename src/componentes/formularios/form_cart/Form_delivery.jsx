@@ -26,6 +26,14 @@ export const Form_delivery = (props) => {
             localStorage.setItem("endereco", JSON.stringify(value_inputs))
         }
     }
+
+    const hendlepedido = () => {
+        event.preventDefault()
+        hendle_campos_inpts()
+        props.action_form()
+    }
+
+   
     
     return (
         <section  
@@ -42,7 +50,7 @@ export const Form_delivery = (props) => {
                                 <input 
                                     type="text" 
                                     placeholder="Digite o nome da rua" 
-                                    required 
+                                    required
                                     onChange={(e)=> setRua(e.target.value)}
                                 />
                             </div>
@@ -91,7 +99,7 @@ export const Form_delivery = (props) => {
                
                 <div>
                     <button
-                        onClick={()=> {event.preventDefault(), hendle_campos_inpts(), props.action_form()}}
+                        onClick={()=>  hendlepedido()}
                     >Finalizar Pedido</button>
                     <span
                     onClick={()=> props.close_form()}

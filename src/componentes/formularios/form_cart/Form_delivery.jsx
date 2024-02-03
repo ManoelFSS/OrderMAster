@@ -1,5 +1,5 @@
 import { useState } from "react"
-import styles  from "./form_delivery.module.css"
+import styles from "./Form_delivery.module.css"
 
 export const Form_delivery = (props) => {
 

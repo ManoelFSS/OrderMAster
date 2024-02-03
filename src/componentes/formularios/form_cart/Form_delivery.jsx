@@ -39,6 +39,8 @@ export const Form_delivery = (props) => {
             hendle_campos_inpts()
             props.action_form()
             props.close_form()
+        }else{
+            alert(" Ops, Por favor preencha todos os campos ❗")
         }
         
     }

@@ -49,10 +49,27 @@
 
 .form_delivery form input{
     border: none;
+    width: 250px;
     height: 30px;
     border-radius: 5px;
     padding: 0px 10px;
     font-weight: bold;
+}
+.are_numBairro {
+    display: flex;
+    gap: 50px;
+}
+
+.number {
+    max-width: 70px;
+}
+.bairro{
+    width: 125px !important;
+}
+.area_btns{
+    display: flex;
+    align-items: center;
+    gap: 30px;
 }
 
 .form_delivery button {
@@ -60,7 +77,12 @@
     color: #fff;
     background-color: #000;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-top: 15px;
 
+}
+
+.area_btns span {
+    padding: 10px 10px;
+    border-radius: 10px;
 }

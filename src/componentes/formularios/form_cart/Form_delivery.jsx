@@ -66,24 +66,30 @@ export const Form_delivery = (props) => {
                                     onChange={(e)=> setRua(e.target.value)}
                                 />
                             </div>
-                            <div>
-                                <label htmlFor="">Numero</label>
-                                <input 
-                                    type="number" 
-                                    placeholder="Digite o numero" 
-                                    required
-                                    onChange={(e)=> setNumero(e.target.value)}
-                                 />
-                            </div>
-                            <div>
-                                <label htmlFor="">Bairro</label>
-                                <input 
-                                    type="text" 
-                                    placeholder="Digite seu bairro" 
-                                    required 
-                                    onChange={(e)=> setBairro(e.target.value)}
-                                />
-                            </div>
+                            <section className={styles.are_numBairro}>
+                                <div>
+                                    <label htmlFor="number">Numero</label>
+                                    <input 
+                                        type="number" 
+                                         placeholder="Ex: 02"
+                                        required
+                                        id={"number"}
+                                        className={styles.number}
+                                        onChange={(e)=> setNumero(e.target.value)}
+                                    />
+                                </div>
+                                <div>
+                                    <label htmlFor="bairro">Bairro</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Digite seu bairro" 
+                                        required 
+                                        className={styles.bairro}
+                                        id="bairro"
+                                        onChange={(e)=> setBairro(e.target.value)}
+                                    />
+                                </div>
+                            </section>
                             <div>
                                 <label htmlFor="">Ponto de Referencia</label>
                                 <input 
@@ -109,7 +115,7 @@ export const Form_delivery = (props) => {
                     )
                 }
                
-                <div>
+                <div className={styles.area_btns}>
                     <button
                         onClick={()=> hendlepedido()}
                     > Finalizar Pedido </button>

@@ -103,7 +103,7 @@ export const Card_carrinho = () => {
           return mensagem 
     }).join('\n')
 
-      const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
+      const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574988161999&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
       window.location.href = linkWhatsApp;
       
      

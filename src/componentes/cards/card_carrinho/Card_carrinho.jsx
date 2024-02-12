@@ -98,12 +98,12 @@ export const Card_carrinho = () => {
     const headerText = `*Cardapio:*https://order-master.netlify.app/\n\n*🥂________KBANA DRINKs_________🥂*\n\n*Nome:* ${getInfoUser}\n${enderecoFiltrado}\n*Localização:* ${getLocalizacao}\n\n*Pedido:* ${dataHoraFormatada}\n`
     
     const mensagem = produtoFiltrado.map((produto) => {
-          const mensagem = `\n*${produto.nome}* - Valor: *${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
+          const mensagem = `\n*${produto.nome}*- Valor:*${Number(produto.preco).toFixed(2)}* R$ unit\n*Descrição:* ${produto.descricao}\n*Quantidade:* ${produto.contador}\n*Preço Total:* ${Number(produto.preco * produto.contador).toFixed(2)} R$ ✅\n_____________________________________`;
           setReload_Localstorage()
           return mensagem 
     }).join('\n')
 
-      const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574988161999&text=${encodeURIComponent(headerText + mensagem + `\n💸 Total Apagar: *${totalGeral.toFixed(2)}* ⚠\n`)}`;
+      const linkWhatsApp = `https://api.whatsapp.com/send?phone=5574935050160&text=${encodeURIComponent(headerText + mensagem + `\n\n*Total Apagar*: *${totalGeral.toFixed(2)}* 💸\n*Chave Pix*: 87981155869\n*Nome*: Manoel Fernando de Souza Silva\n*Banco*: Nubank\n\nPor Favor Enviar Comprovante de Pagamento`)}`;
       window.location.href = linkWhatsApp;
       
      

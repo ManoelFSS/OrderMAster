@@ -84,6 +84,9 @@ export const ProdutsProvider = ({ children }) => {
           categoria:categoria,
           contador:0,
         })
+        setEditarItem("")
+        setReload_Localstorage()
+        getProduts()
       }
       
     }

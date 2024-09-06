@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import styles from "./CardsCart.module.css"
+import {Container_Card_Product} from "./CardStyles";
 import { Contador } from "../../contador/Contador";
 import { useProdutsContext } from "../../../contexts/ProdutsContext";
 
@@ -29,7 +29,7 @@ export const CardsCart = () => {
     if (produts.length <= 0) {
         clearTimeout(timeLoad)
         return (
-            <div className={styles.error}>
+            <div className="">
                     <img src={reload} alt="" />
                     {!text ? <h2>Ops!,  Produto não encontrado...</h2> : ""}
             </div>
@@ -39,46 +39,43 @@ export const CardsCart = () => {
     return (
         <>
             { produts.map((produto)=>(
-                    <section 
-                        key={produto.id} className={styles.card}
-                        style={{opacity:produto.status === true ?  produto.estoque <= 0 ? "0.4" : "1" : "0.4" }}
-                    >
-                        <div>
-                            <section>
-                                <img src={produto.image} alt="" />
-                            </section>
-                            <section>
-                                <h3>{produto.nome}</h3>
-                                <h5>Preço</h5>
-                                <p>{parseFloat(produto.preco).toFixed(2)}</p>
-                            </section>
-                            <section className={styles.area_disponives}>
-                                <h5>Disponiveis</h5>
+                <Container_Card_Product
+                    key={produto.id}
+                    style={{opacity:produto.status === true ?  produto.estoque <= 0 ? "0.4" : "1" : "0.4" }}
+                >
+                    <div className="top_card">
+                        <section className="top_sections">
+                            <img src={produto.image} alt="" />
+                        </section>
+                        <section className="top_sections">
+                            <h3>{produto.nome}</h3>
+                            <div className="price">
+                                <h5>Preço:</h5>
+                                <p>{parseFloat(produto.preco).toFixed(2)} reais</p>
+                            </div>
+                            <div className="status">
+                                <h4>Disponiveis:</h4>
                                 <span
-                                    style={{color: produto.estoque <= 0 ? "#000" : "chocolate"}}
+                                    style={{color: produto.estoque <= 0 ? "#000" : "green"}}
                                 >{produto.status === false ? 0 : Number(produto.estoque)}</span>
-                            </section>
-                        </div>
-                        <div className={styles.contador}>
-                            <section>
-                                { (produto.status === true && produto.estoque === 0) || (produto.status === false && produto.estoque > 0) || (produto.status === false && produto.estoque === 0) ? 
-
-                                    <>
-                                        <h3>Produto Esgotado</h3>
-                                    </> :
-                                    <>
-                                       <Contador index={produto.id} caunt={produto.contador} estoque={produto.estoque} /> 
-                                    </>
-                                }
-                            </section>
-                        </div>
-                        <h3 className={styles.tile_descricao}>Descrição</h3>
-                        <div className={styles.footer_card}>
-                            <span>{produto.descricao}</span>
-                        </div>
-                   </section>
-                ))
-            }
+                            </div>
+                        </section>
+                        
+                    </div>
+                    { (produto.status === true && produto.estoque === 0) || (produto.status === false && produto.estoque > 0) || (produto.status === false && produto.estoque === 0) ? 
+                        <>
+                            <h3>Produto Esgotado</h3>
+                        </> :
+                        <>
+                            <Contador index={produto.id} caunt={produto.contador} estoque={produto.estoque} /> 
+                        </>
+                    }
+                    <div className="card_bottom">
+                        <h3>Descrição</h3>
+                        <p>{produto.descricao}</p>
+                    </div>
+                </Container_Card_Product>
+            ))}
         </>
     )
 }

@@ -24,7 +24,7 @@ export const Menu = () =>{
                 <h2>{JSON.parse(localStorage.getItem("UserName")).split(" ")[0]}</h2>
             </div>
             <ul>
-                <li style={{backgroundColor:"tomato"}}>Produtos</li>
+                <li>Produtos</li>
                 {/* <li>Clientes</li>
                 <li>Configurações</li> */}
             </ul>

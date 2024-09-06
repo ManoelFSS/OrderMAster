@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import styles from "./Produtos.module.css"
-import { Search } from "./Search";
+import { Search } from "../../componentes/search/Search";
 import { Card } from "../../componentes/cards/card_adm/Card_adm";
 import { CardsCart } from "../../componentes/cards/card_produtos/Card_produto";
 import { useProdutsContext } from "../..//contexts/ProdutsContext";
@@ -80,14 +80,12 @@ export const Produtos = () =>{
         <section className={styles.produts}>
           <Search/>
           <div className={styles.container_produtos}>
-            <section className={styles.area_produtos}>
               { auths ? <button 
                   className={styles.btn_add_produtos}
                   onClick={()=> {getValue_modal("flex"), clearinputs()}}
                 >+</button>: <></>
               }
               {auths ? <Card/> : <CardsCart/>}
-            </section>
           </div>
           <section 
             style={{display:modal}}
@@ -177,8 +175,8 @@ export const Produtos = () =>{
           {
             filterCarrinho.length > 0 ? (
               <section className={styles.footer_produtos}>
-                <button onClick={()=> {hendleCart("0px"), scrollToTop()}}>Ver Carrinho</button>
                 <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTNwsxcXZZqO_uqaVHDJYU_XHM2VnMyBW2loXFd9ItunXIGvqaV" alt="" />
+                <button onClick={()=> {hendleCart("0px"), scrollToTop()}}>Ver Carrinho</button>
               </section>
             ):(
               <></>

@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import styles from "./Contador.module.css"
+import { Container_Contador } from "./ContadorStyles"
 import { useProdutsContext } from "../../contexts/ProdutsContext";
 
 export const Contador = (props) => {
@@ -12,7 +11,7 @@ export const Contador = (props) => {
         const newProdutos = JSON.parse(localStorage.getItem("produtos"))
         const posicaoOriginal = newProdutos.findIndex((e) => e.id === id)
         console.log(posicaoOriginal)
-       
+        
         if(item.target.innerHTML === "+"){
             newProdutos[posicaoOriginal].contador = props.estoque > 0 ? props.caunt + 1 : props.caunt
             newProdutos[posicaoOriginal].estoque = props.estoque > 0 ? props.estoque - 1 : props.estoque
@@ -30,16 +29,10 @@ export const Contador = (props) => {
     }
 
     return (
-        <section>
-            <div onClick={(item)=>  hendleCaunt(item, props.index)}>-</div>
-            <div
-            className={styles.contador}
-            style={{color: props.caunt  <= 0 ? "#fff" : "#7bff00" }}
-            >{
-                props.caunt 
-            }</div>
-            <div onClick={(item) =>  hendleCaunt(item, props.index)}>+</div>
-        </section>
-        
+        <Container_Contador>
+            <div className="btn" onClick={(item)=>  hendleCaunt(item, props.index)}>-</div>
+            <div className="btn" style={{color: props.caunt  <= 0 ? "#fff" : "#000" }}> {props.caunt }</div>
+            <div className="btn" onClick={(item) =>  hendleCaunt(item, props.index)}>+</div>
+        </Container_Contador>
     )
 }
